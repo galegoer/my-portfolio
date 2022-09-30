@@ -14,6 +14,8 @@ export HOME="/home/ubuntu/"
 sudo PM2_HOME=/home/ubuntu/.pm2 pm2 list
 
 #install node modules
+which pm2
+which node
 ls /usr/local/bin/
 ls /home
 ls /home/ubuntu/
