@@ -10,19 +10,22 @@ cd /home/ec2-user/node-app
 export NVM_DIR="$HOME/.nvm"	
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # loads nvm	
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # loads nvm bash_completion (node is in path now)
+export HOME="/home/ubuntu/"
+sudo PM2_HOME=/home/ubuntu/.pm2 pm2 list
 
 #install node modules
 ls /usr/local/bin/
 ls /home
+ls /home/ubuntu/
 
 cd my-website/server
-sudo /usr/local/bin/npm install
+npm install
 cd ../client/
-sudo /usr/local/bin/npm install
+npm install
 cd /home/ec2-user/node-app/scripts
 
 # start both client and server
-sudo /usr/local/bin/pm2 start ecosystem.config.js
+pm2 start ecosystem.config.js
 
 #start our node app in the background
 # node app.js > app.out.log 2> app.err.log < /dev/null &
