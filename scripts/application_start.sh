@@ -21,8 +21,6 @@ cd ../client/
 sudo /usr/local/bin/npm install
 cd /home/ec2-user/node-app/scripts
 
-# delete existing not sure if necessary
-sudo /usr/local/bin/pm2 delete ecosystem.config.js
 # start both client and server
 sudo /usr/local/bin/pm2 start ecosystem.config.js
 
