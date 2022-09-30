@@ -13,15 +13,15 @@ export NVM_DIR="$HOME/.nvm"
 
 #install node modules
 cd my-website/server
-npm install
+sudo ~/.nvm/versions/node/v16.17.1/bin/npm install
 cd ../client/
-npm install
+sudo ~/.nvm/versions/node/v16.17.1/bin/npm install
 cd /home/ec2-user/node-app/scripts
 
 # delete existing not sure if necessary
-pm2 delete ecosystem.config.js
+sudo ~/.nvm/versions/node/v16.17.1/bin/pm2 delete ecosystem.config.js
 # start both client and server
-pm2 start ecosystem.config.js
+sudo ~/.nvm/versions/node/v16.17.1/bin/pm2 start ecosystem.config.js
 
 #start our node app in the background
 # node app.js > app.out.log 2> app.err.log < /dev/null &
