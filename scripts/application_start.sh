@@ -12,16 +12,19 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # loads nvm bash_completion (node is in path now)
 
 #install node modules
+ls /usr/local/bin/
+ls /home
+
 cd my-website/server
-sudo ~/.nvm/versions/node/v16.17.1/bin/npm install
+sudo /usr/local/bin/npm install
 cd ../client/
-sudo ~/.nvm/versions/node/v16.17.1/bin/npm install
+sudo /usr/local/bin/npm install
 cd /home/ec2-user/node-app/scripts
 
 # delete existing not sure if necessary
-sudo ~/.nvm/versions/node/v16.17.1/bin/pm2 delete ecosystem.config.js
+sudo /usr/local/bin/pm2 delete ecosystem.config.js
 # start both client and server
-sudo ~/.nvm/versions/node/v16.17.1/bin/pm2 start ecosystem.config.js
+sudo /usr/local/bin/pm2 start ecosystem.config.js
 
 #start our node app in the background
 # node app.js > app.out.log 2> app.err.log < /dev/null &
