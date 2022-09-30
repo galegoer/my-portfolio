@@ -16,8 +16,11 @@ cd my-website/server
 npm install
 cd ../client/
 npm install
-cd /home/ec2-user/node-app
+cd /home/ec2-user/node-app/scripts
 
+# delete existing not sure if necessary
+pm2 delete ecosystem.config.js
+# start both client and server
 pm2 start ecosystem.config.js
 
 #start our node app in the background
