@@ -3,6 +3,12 @@
 #give permission for everything in the node-app directory
 sudo chmod -R 777 /home/ec2-user/node-app
 
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+. ~/.nvm/nvm.sh
+nvm install node
+
+sudo npm install pm2 -g
+
 #navigate into our working directory where we have all our github files
 cd /home/ec2-user/node-app
 
@@ -26,8 +32,4 @@ cd ../client/
 npm install
 cd /home/ec2-user/node-app/scripts
 
-# start both client and server
 pm2 start ecosystem.config.js
-
-#start our node app in the background
-# node app.js > app.out.log 2> app.err.log < /dev/null &
