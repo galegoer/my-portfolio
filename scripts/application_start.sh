@@ -15,9 +15,10 @@ export NVM_DIR="$HOME/.nvm"
 cd my-website/server
 npm install
 cd ../client/
-
 npm install
-npm start > app.out.log 2> app.err.log < /dev/null &
+cd /home/ec2-user/node-app
+
+pm2 start ecosystem.config.js
 
 #start our node app in the background
 # node app.js > app.out.log 2> app.err.log < /dev/null &
