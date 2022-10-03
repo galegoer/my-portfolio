@@ -1,19 +1,10 @@
 module.exports = {
     apps: [
       {
-        name: "client",
-        cwd: "../my-website/client",
-        script: "npm",
-        args: "start",
-        autorestart: true,
-        watch: false,
-        max_memory_restart: "1G",
-      },
-      {
-        name: "server",
+        name: "server + static client",
         cwd: "../my-website/server",
-        script: "node index.js",
-        args: "start",
+        script: "node",
+        args: "index.js",
         autorestart: true,
         watch: false,
         max_memory_restart: "1G",
