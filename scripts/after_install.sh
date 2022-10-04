@@ -30,6 +30,7 @@ cd my-website/server
 npm install
 cd ../client/
 npm install
+npm run build
 cd /home/ec2-user/node-app/scripts
 
 pm2 start ecosystem.config.js

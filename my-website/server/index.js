@@ -37,6 +37,10 @@ io.on("connection", (socket) => {
     })
 });
 
-server.listen(3001, () => {
+app.get("/", (req, res) => {
+    res.send("HI YOU'RE ON THE SERVER");
+})
+
+server.listen(3000, () => {
     console.log('SERVER RUNNING');
 });
