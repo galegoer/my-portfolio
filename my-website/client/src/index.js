@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import { initializeParse } from '@parse/react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const parse_server_url = process.env.REACT_APP_PARSE_SERVER_URL;
 const parse_app_id = process.env.REACT_APP_PARSE_APP_ID;
