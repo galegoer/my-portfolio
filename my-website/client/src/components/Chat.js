@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 
 
 function Chat({ socket, username, room }) {
@@ -29,48 +30,45 @@ function Chat({ socket, username, room }) {
     }
   };
 
+  const renderMessage = (message) => {
+
+    const className = (username === message.author ? "Messages-message currentMember" : "Messages-message");
+    console.log(className);
+    return (
+      <li className={className}>
+        <div className="Message-content">
+          <div className="username">{message.author}</div>
+          <div className="text">{message.message}</div>
+          <div className="time-stamp">{message.time}</div>
+        </div>
+      </li>
+    );
+  }
+
   return (
-    <div className="chat-window">
-      <div className="chat-header">
-        <p>Live Chat</p>
-      </div>
-      <div className="chat-body">
-        <ScrollToBottom className="message-container">
-          {messages.map((messageContent) => {
-            return (
-              <div
-                className="message"
-                id={username === messageContent.author ? "you" : "other"}
-              >
-                <div>
-                  <div className="message-content">
-                    <p>{messageContent.message}</p>
-                  </div>
-                  <div className="message-meta">
-                    <p id="time">{messageContent.time}</p>
-                    <p id="author">{messageContent.author}</p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </ScrollToBottom>
-      </div>
-      <div className="chat-footer">
-        <input
-          type="text"
-          value={currMessage}
-          placeholder="Type something..."
-          onChange={(event) => {
-            setCurrMessage(event.target.value);
-          }}
-          onKeyPress={(event) => {
-            event.key === "Enter" && sendMessage();
-          }}
-        />
-        <button onClick={sendMessage}><FontAwesomeIcon icon={faPaperPlane} /></button>
-      </div>
-    </div>
+      <>
+        <h3>Current Room: {room} </h3>
+        
+        <div style={{'width': 'calc(100% / 3)', 'height': 'calc(95% - 106px)'}}>
+          <ScrollToBottom className="h-100">
+            <ul className="Messages-list">
+              {messages.map(m => renderMessage(m))}
+            </ul>
+          </ScrollToBottom>
+        </div>
+          <div className='d-flex align-items-end justify-content-center mb-4'>
+            <TextareaAutosize
+              onChange={e => setCurrMessage(e.target.value)}
+              aria-label="minimum height"
+              minRows={1}
+              placeholder="Enter a Message"
+              value={currMessage}
+              autoFocus="true"
+              className='chat-textarea'
+            />
+            <button className="send-button" onClick={sendMessage}><FontAwesomeIcon icon={faPaperPlane} /></button>
+          </div>
+      </>
   );
 }
 
