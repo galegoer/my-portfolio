@@ -3,6 +3,7 @@
 #give permission for everything in the node-app directory
 sudo chmod -R 777 /home/ec2-user/node-app
 
+# have to keep installing doesn't really work otherwise
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 . ~/.nvm/nvm.sh
 nvm install node
@@ -19,13 +20,6 @@ export NVM_DIR="$HOME/.nvm"
 export HOME="/home/ec2-user/"
 sudo PM2_HOME=/home/ec2-user/.pm2 pm2 list
 
-#install node modules
-which pm2
-which node
-ls /usr/local/bin/
-ls /home
-ls /home/ec2-user/
-
 cd my-website/server
 npm install
 cd ../client/
@@ -33,4 +27,5 @@ npm install
 npm run build
 cd /home/ec2-user/node-app/scripts
 
+pm2 kill # in case of existing
 pm2 start ecosystem.config.js
