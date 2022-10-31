@@ -5,7 +5,7 @@ const { Server } = require('socket.io');
 const cors = require('cors');
 const path = require('path');
 
-app.use(express.static(path.join(__dirname, '../client/build')));
+// app.use(express.static(path.join(__dirname, '../client/build')));
 app.use(cors());
 
 const server = http.createServer(app);
@@ -41,6 +41,6 @@ app.get("/", (req, res) => {
     res.send("HI YOU'RE ON THE SERVER");
 })
 
-server.listen(3000, () => {
+server.listen(3001, () => {
     console.log('SERVER RUNNING');
 });

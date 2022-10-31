@@ -28,7 +28,7 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "npm run build",
-    "start": "react-scripts start",
+    "start": "start node ../server/index.js && serve -s build -p 3000",
     "dev": "start react-scripts start && nodemon ../server",
     "build": "react-scripts build",
     "test": "react-scripts test",
