@@ -5,12 +5,21 @@ const { Server } = require('socket.io');
 const cors = require('cors');
 const path = require('path');
 
-// app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, '../client/build')));
 app.use(cors());
+
+app.use((req, res, next) => {
+    res.sendFile(path.join(__dirname, "../client", "build", "index.html"));
+    //res.header("Access-Control-Allow-Origin", "*");
+    //res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
+    //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    //next();
+});
 
 const server = http.createServer(app);
 
 const io = new Server(server, {
+    // Not sure if this is needed
     cors: {
         origin: "http://localhost:3000",
         methods: ["GET", "POST"],
@@ -41,6 +50,6 @@ app.get("/", (req, res) => {
     res.send("HI YOU'RE ON THE SERVER");
 })
 
-server.listen(3001, () => {
+server.listen(3000, () => {
     console.log('SERVER RUNNING');
 });
