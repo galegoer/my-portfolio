@@ -1,6 +1,6 @@
 .App {
   width: 100vw;
-  height: 100vh;
+  height: 85vh;
   background: #fff;
   color: #212121;
   font-family: "Open Sans", sans-serif;
@@ -32,6 +32,18 @@ body {
   color: white;
 } */
 
+.chat-room {
+  width: 100vw;
+  height: 90vh;
+  background: #fff;
+  color: #212121;
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  margin-top: 5rem;
+}
+
 .Messages-list {
   padding: 20px 0;
   max-width: 900px;
@@ -40,7 +52,7 @@ body {
   list-style: none;
   padding-left: 0;
   flex-grow: 1;
-  overflow: auto;
+  overflow-wrap: break-word;
 }
 
 .Messages-message {
@@ -154,8 +166,23 @@ body {
 
 .chat-textarea {
   padding: 10px;
-  min-width: 400px;
   border-radius: 12px;
   resize: none;
   max-height: 200px;
+  width: 50%;
+}
+
+.skills-area {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.skills-child {
+  display: flex;
+  margin: 10px 0 0 10px;
+  width: calc(100% * (1/4) - 10px - 1px);
+  justify-content: center;
+  flex: 1 1 calc(25% - 20px);
 }
