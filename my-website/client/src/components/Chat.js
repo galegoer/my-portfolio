@@ -49,14 +49,14 @@ function Chat({ socket, username, room }) {
       <>
         <h3>Current Room: {room} </h3>
         
-        <div style={{'width': 'calc(100% / 3)', 'height': 'calc(95% - 106px)'}}>
+        <div style={{'width': 'calc(50%)', 'height': 'calc(95% - 106px)'}}>
           <ScrollToBottom className="h-100">
             <ul className="Messages-list">
               {messages.map(m => renderMessage(m))}
             </ul>
           </ScrollToBottom>
         </div>
-          <div className='d-flex align-items-end justify-content-center mb-4'>
+          <div className='d-flex align-items-end justify-content-center mb-4 mt-3 w-75'>
             <TextareaAutosize
               onChange={e => setCurrMessage(e.target.value)}
               aria-label="minimum height"
