@@ -15,7 +15,7 @@ function NavBar() {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="/song-rec">Song Recommendation</Nav.Link>
-              <Nav.Link href="#features">Game 1 (TBD)</Nav.Link>
+              <Nav.Link href="/canvas">Canvas</Nav.Link>
               <Nav.Link href="#pricing"></Nav.Link>
               <NavDropdown title="Temp Dropdown" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="#action">Action</NavDropdown.Item>
