@@ -15,5 +15,10 @@
 # echo "Stopping any existing node servers"
 # pkill node
 
-docker stop my-website-docker:latest
-docker stop my-website-docker-server:latest
+if docker container inspect my-website-docker:latest; then
+    docker stop my-website-docker:latest
+fi
+
+if docker container inspect my-website-docker-server:latest; then
+    docker stop my-website-docker-server:latest
+fi
