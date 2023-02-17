@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import CanvasDraw from "react-canvas-draw";
 import { useRef, useState } from "react";
+import axios from 'axios';
 
 function CanvasPage() {
 
   const saveableCanvas = useRef(null);
-  // const [color, setColor] = useState('black');
+  const [drawnNumber, setNumber] = useState();
 
   // need to set background as white for it to be detected
   const [whiteBg] = useState(JSON.stringify({
@@ -15,34 +16,42 @@ function CanvasPage() {
       "height":400
   }));
 
-  const setCanvasRef = (canvasDraw) => {
-    saveableCanvas.current = canvasDraw;
-    clearCanvas();    
-  };
+  useEffect(() => {
+    // const canvas = saveableCanvas.current;
+    clearCanvas();
+  }, [saveableCanvas]);
 
   const clearCanvas = () => {
     saveableCanvas.current.eraseAll();
     saveableCanvas.current.loadSaveData(whiteBg, false);
   };
 
+  const getData = () => {
+    const uri = saveableCanvas.current.getDataURL();
+    axios.post('/guess-number', { uri: uri }).then(res => setNumber(res.data['guessed_number']));
+  };
+
   return (
     <>
 
-      <div class="d-flex flex-column align-items-center justify-content-center text-center" style={{fontFamily: 'Playfair Display'}}>
-        <h2 class="w-75 text-center">
+      <div className="d-flex flex-column align-items-center justify-content-center text-center" style={{fontFamily: 'Playfair Display'}}>
+        <h2 className="w-75 text-center">
           Draw a number using the canvas and the number that you drew will be guessed by a convolutional neural network for handwritten digit classification.
           {/* Can maybe add more info here summary */}
         </h2>
-        <h4 class="w-50 text-center">
+        <h4 className="w-50 text-center">
           Note: If the canvas shows grid lines there will be an issue with detection, please click clear canvas which ensures a white background and the ability to detect the number being written.
         </h4>
+        <h2>Your number is: {drawnNumber}</h2>
       </div>
       <CanvasDraw className='mx-auto border border-dark'
-        ref={setCanvasRef} 
+        // ref={setCanvasRef} 
+        ref={saveableCanvas} 
         onChange={() => console.log("onChange")}
         brushColor={'black'}
         brushRadius={15}
       />
+
 
       <div className='d-flex justify-content-center'>
 
@@ -59,25 +68,13 @@ function CanvasPage() {
           saveableCanvas.current.undo();
         }}>Undo</button>
 
-        <button onClick={() => {
+        {/* <button onClick={() => {
           console.log(saveableCanvas.current.getDataURL());
           alert("DataURL written to console")
-        }}>GetDataURL</button>
+        }}>GetDataURL</button> */}
 
-        <button disabled onClick={() => {
-          // TODO: add call to send to python script running the number checker
-        }}>Guess my number</button>
+        <button onClick={getData}>Guess my number</button>
 
-        {/* <button onClick={() => {
-          setColor((curr) => {
-            console.log(curr);
-            if(curr === 'white') {
-              return 'black';
-            }else{
-              return 'white';
-            }
-          });
-        }}>Change Color</button> */}
       </div>
 
     </>
