@@ -1,3 +1,6 @@
-my-website/.env
-my-website/client/node_modules/
-my-website/server/node_modules/
+.env
+client/node_modules/
+server/node_modules/
+server/Lib
+server/__pycache__
+server/Scripts
