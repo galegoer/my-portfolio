@@ -22,7 +22,8 @@ function Chat({ socket, username, room }) {
         room: room,
         author: username,
         message: currMessage,
-        time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
+        time: new Date().toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', hour12: true}),
+        // time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
       };
       await socket.emit('send_message', messageData);
       setMessages((list) => [...list, messageData]);
@@ -33,7 +34,7 @@ function Chat({ socket, username, room }) {
   const renderMessage = (message) => {
 
     const className = (username === message.author ? "Messages-message currentMember" : "Messages-message");
-    console.log(className);
+    // console.log(className);
     return (
       <li className={className}>
         <div className="Message-content">
@@ -63,7 +64,7 @@ function Chat({ socket, username, room }) {
               minRows={1}
               placeholder="Enter a Message"
               value={currMessage}
-              autoFocus="true"
+              autoFocus={true}
               className='chat-textarea'
             />
             <button className="send-button" onClick={sendMessage}><FontAwesomeIcon icon={faPaperPlane} /></button>

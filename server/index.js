@@ -3,18 +3,21 @@ const app = express();
 const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
-const path = require('path');
+// const path = require('path');
+const bodyParser = require('body-parser');
+const port = 8000;
 
-app.use(express.static(path.join(__dirname, '../client/build')));
+// app.use(express.static(path.join(__dirname, '../client/build')));
 app.use(cors());
+app.use(bodyParser.json());
 
-app.use((req, res, next) => {
-    res.sendFile(path.join(__dirname, "../client", "build", "index.html"));
-    //res.header("Access-Control-Allow-Origin", "*");
-    //res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
-    //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    //next();
-});
+// app.use((req, res, next) => {
+//     res.sendFile(path.join(__dirname, "../client", "build", "index.html"));
+//     //res.header("Access-Control-Allow-Origin", "*");
+//     //res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
+//     //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     //next();
+// });
 
 const server = http.createServer(app);
 
@@ -48,8 +51,25 @@ io.on("connection", (socket) => {
 
 app.get("/", (req, res) => {
     res.send("HI YOU'RE ON THE SERVER");
-})
-
-server.listen(3000, () => {
-    console.log('SERVER RUNNING');
 });
+
+app.post("/guess-number", (req, res) => {
+    // console.log(req.body.uri);
+    var spawn = require('child_process').spawn;
+    var py = spawn('python', ['number_detector.py']);
+    var detectedNum = '';
+
+    py.stdout.on('data', function(data){
+        detectedNum = data.toString();
+    });
+    py.stdout.on('end', function(){
+        console.log('Detected number=',detectedNum);
+        res.send(detectedNum);
+    });
+    py.stdin.write(JSON.stringify(req.body.uri));
+    py.stdin.end();
+});
+
+// app.listen(port, () => console.log(`Listening on port ${port}`));
+
+server.listen(port, () => console.log(`SERVER RUNNING on port ${port}`));

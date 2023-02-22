@@ -5,6 +5,11 @@ ENV PYTHONBUFFERED 1
 COPY ./requirements.txt /api/requirements.txt
 RUN pip install --no-cache-dir --upgrade -r /api/requirements.txt
 RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
+RUN npm install pm2 -g
 COPY . /api
 EXPOSE 8000
-CMD ["python3", "-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["pm2-runtime", "index.js"]
+# CMD ["pm2", "start", "ecosystem.config.js"]
+# pm2 kill # in case of existing
+# pm2 start ecosystem.config.js
+# CMD ["python3", "-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

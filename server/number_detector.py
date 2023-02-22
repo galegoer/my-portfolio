@@ -1,5 +1,6 @@
 import numpy as np
 from numpy import argmax
+import sys, json
 
 import cv2
 import math
@@ -106,8 +107,17 @@ def analyze_number(uri):
     print(digit)
     return digit
     
-    
+
+#Read data from stdin
+def read_in():
+    lines = sys.stdin.readlines()
+    #Since our input would only be having one line, parse our JSON data from that
+    return json.loads(lines[0])
+
 if __name__ == '__main__':
     # Can change to add image upload as well but for now we are using uri
-    uri = input('Input the data uri of the image you are analyzing: ')
-    final_num = analyze_number(uri)
+    # uri = sys.argv[1]
+    lines = read_in()
+    print(lines)
+    final_num = analyze_number(lines)
+    sys.stdout(final_num)
