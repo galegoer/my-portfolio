@@ -31,10 +31,12 @@ cd /home/ec2-user/node-app
 # pm2 start ecosystem.config.js
 
 
-docker-compose build
+# docker-compose build
+docker build my-website-docker:latest
+docker run -p 8000:8000 my-website-docker:latest > /dev/null 2>&1 &
 
 # client
-docker run -p 3000:80 my-website-docker:latest & docker run -p 8000:8000 my-website-docker-server:latest
+# docker run -p 3000:80 my-website-docker:latest & docker run -p 8000:8000 my-website-docker-server:latest
 
 
 

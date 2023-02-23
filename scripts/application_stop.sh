@@ -17,8 +17,9 @@
 
 if docker container inspect my-website-docker:latest; then
     docker stop my-website-docker:latest
+    docker rmi my-website-docker:latest -f
 fi
 
-if docker container inspect my-website-docker-server:latest; then
-    docker stop my-website-docker-server:latest
-fi
+# if docker container inspect my-website-docker-server:latest; then
+#     docker stop my-website-docker-server:latest
+# fi

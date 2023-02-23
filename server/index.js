@@ -3,7 +3,7 @@ const app = express();
 const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
-// const path = require('path');
+const path = require('path');
 const bodyParser = require('body-parser');
 const port = 8000;
 
@@ -11,11 +11,19 @@ const port = 8000;
 app.use(cors());
 app.use(bodyParser.json());
 
+// add middlewares
+const root = require('path').join(__dirname, '../client/build');
+app.use(express.static(root));
+
+app.use('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
+});
+
 // app.use((req, res, next) => {
 //     res.sendFile(path.join(__dirname, "../client", "build", "index.html"));
-//     //res.header("Access-Control-Allow-Origin", "*");
-//     //res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
-//     //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     // res.header("Access-Control-Allow-Origin", "*");
+//     // res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
+//     // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 //     //next();
 // });
 
