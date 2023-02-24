@@ -14,5 +14,23 @@ hooks:
       runas: ec2-user
   ApplicationStart:
     - location: scripts/application_start.sh
-      timeout: 600
+      timeout: 300
       runas: ec2-user
+environment: {
+    REACT_APP_PARSE_APP_ID: {
+      "name": "REACT_APP_PARSE_APP_ID",
+      "type": "String"
+    },
+    REACT_APP_PARSE_JS_KEY: {
+      "name": "REACT_APP_PARSE_JS_KEY",
+      "type": "String"
+    },
+    REACT_APP_PARSE_SERVER_URL: {
+      "name": "REACT_APP_PARSE_SERVER_URL",
+      "type": "String"
+    },
+    REACT_APP_TEST_VAR: {
+      "name": "REACT_APP_TEST_VAR",
+      "type": "String"
+    }
+}
