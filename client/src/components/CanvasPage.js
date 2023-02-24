@@ -29,7 +29,8 @@ function CanvasPage() {
   const getData = () => {
     const uri = saveableCanvas.current.getDataURL();
     // axios.post('/guess-number', { uri: uri }).then(res => setNumber(res.data['guessed_number']));
-    axios.post('/guess-number', { uri: uri }).then(res => setNumber(res.data));
+    // can make axios config later if there's more api calls
+    axios.post('/api/guess-number', { uri: uri }).then(res => setNumber(res.data));
   };
 
   return (

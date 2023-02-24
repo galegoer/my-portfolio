@@ -15,10 +15,6 @@ app.use(bodyParser.json());
 const root = require('path').join(__dirname, '../client/build');
 app.use(express.static(root));
 
-app.use('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
-});
-
 // app.use((req, res, next) => {
 //     res.sendFile(path.join(__dirname, "../client", "build", "index.html"));
 //     // res.header("Access-Control-Allow-Origin", "*");
@@ -57,12 +53,12 @@ io.on("connection", (socket) => {
     })
 });
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
     res.send("HI YOU'RE ON THE SERVER");
 });
 
-app.post("/guess-number", (req, res) => {
-    // console.log(req.body.uri);
+app.post("/api/guess-number", (req, res) => {
+    console.log(req.body.uri);
     var spawn = require('child_process').spawn;
     var py = spawn('python', ['number_detector.py']);
     var detectedNum = '';
@@ -79,5 +75,9 @@ app.post("/guess-number", (req, res) => {
 });
 
 // app.listen(port, () => console.log(`Listening on port ${port}`));
+
+app.use('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
+});  
 
 server.listen(port, () => console.log(`SERVER RUNNING on port ${port}`));

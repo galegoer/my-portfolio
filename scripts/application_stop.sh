@@ -16,7 +16,7 @@
 # pkill node
 
 if docker container inspect my-website-docker:latest; then
-    docker stop my-website-docker:latest
+    docker rm $(docker stop $(docker ps -a -q --filter ancestor=<my-website-docker:latest> --format="{{.ID}}"))
     docker rmi my-website-docker:latest -f
 fi
 

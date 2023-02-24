@@ -5,6 +5,8 @@ COPY client/package*.json ./
 RUN npm install
 COPY client/src/ ./src
 COPY client/public/ ./public
+#TODO Change this to be more secure later
+COPY client/.env ./
 RUN npm run build
 
 FROM node:14 AS server-build

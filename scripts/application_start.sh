@@ -32,7 +32,7 @@ cd /home/ec2-user/node-app
 
 
 # docker-compose build
-docker build my-website-docker:latest
+docker build -t my-website-docker:latest .
 docker run -p 8000:8000 my-website-docker:latest > /dev/null 2>&1 &
 
 # client
