@@ -3,6 +3,8 @@ os: linux
 files:
   - source: /
     destination: /home/ec2-user/node-app
+  - source: ./scripts/docker-start.sh
+    destination: /tmp
 hooks:
   ApplicationStop:
     - location: scripts/application_stop.sh
