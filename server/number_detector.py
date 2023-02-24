@@ -104,7 +104,7 @@ def analyze_number(uri):
     # predict the class
     predict_value = model.predict(gray)
     digit = argmax(predict_value)
-    print(digit)
+    # print(digit)
     return digit
     
 
@@ -118,6 +118,5 @@ if __name__ == '__main__':
     # Can change to add image upload as well but for now we are using uri
     # uri = sys.argv[1]
     lines = read_in()
-    print(lines)
     final_num = analyze_number(lines)
-    sys.stdout(final_num)
+    print(final_num)

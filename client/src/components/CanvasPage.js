@@ -28,6 +28,8 @@ function CanvasPage() {
 
   const getData = () => {
     const uri = saveableCanvas.current.getDataURL();
+    // TODO: add something that says LOADING... for your num is and error if blank
+
     // axios.post('/guess-number', { uri: uri }).then(res => setNumber(res.data['guessed_number']));
     // can make axios config later if there's more api calls
     axios.post('/api/guess-number', { uri: uri }).then(res => setNumber(res.data));

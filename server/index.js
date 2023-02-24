@@ -58,12 +58,13 @@ app.get("/api", (req, res) => {
 });
 
 app.post("/api/guess-number", (req, res) => {
-    console.log(req.body.uri);
+    // console.log(req.body.uri);
     var spawn = require('child_process').spawn;
     var py = spawn('python', ['number_detector.py']);
     var detectedNum = '';
 
     py.stdout.on('data', function(data){
+        // console.log(data.toString());
         detectedNum = data.toString();
     });
     py.stdout.on('end', function(){
