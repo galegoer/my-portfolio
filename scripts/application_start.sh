@@ -12,7 +12,7 @@ sudo chmod -R 777 /home/ec2-user/node-app
 # sudo npm install pm2 -g
 
 #navigate into our working directory where we have all our github files
-# cd /home/ec2-user/node-app/scripts
+cd /home/ec2-user/node-app
 
 #add npm and node to path
 # export NVM_DIR="$HOME/.nvm"	
@@ -33,7 +33,7 @@ sudo chmod -R 777 /home/ec2-user/node-app
 
 
 # docker-compose build
-/tmp/docker-start.sh > /dev/null 2> /dev/null < /dev/null &
+docker-start.sh > /dev/null 2> /dev/null < /dev/null &
 
 # docker build -t my-website-docker:latest .
 # docker run -p 8000:8000 my-website-docker:latest > /dev/null 2>&1
