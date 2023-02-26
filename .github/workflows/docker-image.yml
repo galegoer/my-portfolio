@@ -42,4 +42,4 @@ jobs:
           aws deploy create-deployment \
             --application-name ${{ env.APPLICATION_NAME }} \
             --deployment-group-name ${{ env.DEPLOYMENT_GROUP_NAME }} \
-            --revision type=GitHub,gitHubLocation={repository=${{ github.repository }},commitId=${{ github.sha }}}
+            --revision type=GitHub,gitHubLocation={repository=galegoer/my-portfolio,commitId=${{ github.sha }}}
