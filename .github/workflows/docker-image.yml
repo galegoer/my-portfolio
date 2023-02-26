@@ -10,6 +10,8 @@ env:
   ECR_REGISTRY: 090413310302.dkr.ecr.us-east-2.amazonaws.com
   IMAGE_NAME: my-website-docker
   IMAGE_TAG: ${{ github.sha }}
+  APPLICATION_NAME: node-app
+  DEPLOYMENT_GROUP_NAME: node-app-group
 
 jobs:
   build-and-deploy:
@@ -35,8 +37,8 @@ jobs:
           docker build -t $ECR_REGISTRY/$IMAGE_NAME:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$IMAGE_NAME:$IMAGE_TAG
       - name: Start AWS CodeDeploy deployment
-        uses: aws-actions/aws-codedeploy@v1
-        with:
-          deployment-group-name: node-app-group
-          region: ${{ env.AWS_REGION }}
-          wait-until-deployed: true
+        run: |
+          aws deploy create-deployment \
+            --application-name ${{ env.APPLICATION_NAME }} \
+            --deployment-group-name ${{ env.DEPLOYMENT_GROUP_NAME }} \
+            --revision revisionType=GitHub,gitHubLocation={repository=${{ github.repository }},commitId=${{ github.sha }}}
