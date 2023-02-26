@@ -41,4 +41,5 @@ jobs:
         run: |
           aws deploy create-deployment \
             --application-name ${{ env.APPLICATION_NAME }} \
-            --deployment-group-name ${{ env.DEPLOYMENT_GROUP_NAME }}
+            --deployment-group-name ${{ env.DEPLOYMENT_GROUP_NAME }} \
+            --revision type=GitHub,location={repository=${{ github.repository }},commitId=${{ github.sha }}}
