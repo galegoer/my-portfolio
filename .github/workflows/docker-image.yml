@@ -9,7 +9,8 @@ env:
   AWS_REGION: us-east-2
   ECR_REGISTRY: 090413310302.dkr.ecr.us-east-2.amazonaws.com
   IMAGE_NAME: my-website-docker
-  IMAGE_TAG: ${{ github.sha }}
+#   IMAGE_TAG: ${{ github.sha }}
+  IMAGE_TAG: latest
   APPLICATION_NAME: node-app
   DEPLOYMENT_GROUP_NAME: node-app-group
 
@@ -40,5 +41,4 @@ jobs:
         run: |
           aws deploy create-deployment \
             --application-name ${{ env.APPLICATION_NAME }} \
-            --deployment-group-name ${{ env.DEPLOYMENT_GROUP_NAME }} \
-            --revision revisionType=GitHub,gitHubLocation={repository=${{ github.repository }},commitId=${{ github.sha }}}
+            --deployment-group-name ${{ env.DEPLOYMENT_GROUP_NAME }}
