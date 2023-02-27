@@ -2,11 +2,14 @@ import React, { useEffect } from 'react';
 import CanvasDraw from "react-canvas-draw";
 import { useRef, useState } from "react";
 import axios from 'axios';
+import { RotatingLines } from 'react-loader-spinner';
+
 
 function CanvasPage() {
 
   const saveableCanvas = useRef(null);
   const [drawnNumber, setNumber] = useState();
+  const [loading, setLoading] = useState(false);
 
   // need to set background as white for it to be detected
   const [whiteBg] = useState(JSON.stringify({
@@ -27,12 +30,23 @@ function CanvasPage() {
   };
 
   const getData = () => {
+    setLoading(true);
     const uri = saveableCanvas.current.getDataURL();
     // TODO: add something that says LOADING... for your num is and error if blank
 
     // axios.post('/guess-number', { uri: uri }).then(res => setNumber(res.data['guessed_number']));
     // can make axios config later if there's more api calls
-    axios.post('/api/guess-number', { uri: uri }).then(res => setNumber(res.data));
+    axios.post('/api/guess-number', { uri: uri })
+    .then(res => {
+      setLoading(false);
+      setNumber(res.data);
+    })
+    .catch(() => {
+      setNumber('There was an error, please try again later.');
+    })
+    .finally(() => {
+      setLoading(false);
+    });
   };
 
   return (
@@ -46,7 +60,8 @@ function CanvasPage() {
         <h4 className="w-50 text-center">
           Note: If the canvas shows grid lines there will be an issue with detection, please click clear canvas which ensures a white background and the ability to detect the number being written.
         </h4>
-        <h2>Your number is: {drawnNumber}</h2>
+        <h2>Your number is: </h2>
+        <h3 style={{'color': 'red'}}>{loading ? <RotatingLines strokeColor="grey" strokeWidth="5" animationDuration="0.75" width="96" visible={true} /> : drawnNumber}</h3>
       </div>
       <CanvasDraw className='mx-auto border border-dark'
         // ref={setCanvasRef} 

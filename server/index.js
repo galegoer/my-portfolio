@@ -64,11 +64,13 @@ app.post("/api/guess-number", (req, res) => {
     var detectedNum = '';
 
     py.stdout.on('data', function(data){
-        // console.log(data.toString());
         detectedNum = data.toString();
     });
     py.stdout.on('end', function(){
         console.log('Detected number=',detectedNum);
+        if (!detectedNum) {
+            detectedNum = 'There was an error, please try again later.';
+        }
         res.send(detectedNum);
     });
     py.stdin.write(JSON.stringify(req.body.uri));
