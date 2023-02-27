@@ -35,6 +35,12 @@ jobs:
           IMAGE_NAME: ${{ env.IMAGE_NAME }}
           IMAGE_TAG: ${{ env.IMAGE_TAG }}
         run: |
+          cd client
+          echo REACT_APP_PARSE_APP_ID="${{ secrets.REACT_APP_PARSE_APP_ID }}" >> .env
+          echo REACT_APP_PARSE_JS_KEY="${{ secrets.REACT_APP_PARSE_JS_KEY }}" >> .env
+          echo REACT_APP_PARSE_SERVER_URL="${{ secrets.REACT_APP_PARSE_SERVER_URL }}" >> .env
+          echo REACT_APP_TEST_VAR="${{ secrets.REACT_APP_TEST_VAR }}" >> .env
+          cd ..
           docker build -t $ECR_REGISTRY/$IMAGE_NAME:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$IMAGE_NAME:$IMAGE_TAG
       - name: Start AWS CodeDeploy deployment

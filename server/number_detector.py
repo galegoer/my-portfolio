@@ -7,8 +7,6 @@ import math
 from scipy import ndimage
 
 from keras.models import load_model
-
-import matplotlib.pyplot as plt
 import base64
 
 
@@ -40,20 +38,10 @@ def analyze_number(uri):
     
     nparr = np.frombuffer(base64.b64decode(encoded_data), np.uint8)    
     
-    #if we want to see plot of images
-    regular_img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-    plt.imshow(regular_img)
-    
     gray = cv2.imdecode(nparr, cv2.IMREAD_GRAYSCALE)
-    
-    #plt.imshow(gray)
-    #plt.show()
-    
     # resize the images and invert it (black background)
     gray = cv2.resize(255-gray, (28, 28))
     
-    #plt.imshow(gray)
-    #plt.show()
     
     # added
     (thresh, gray) = cv2.threshold(gray, 128, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
@@ -91,9 +79,6 @@ def analyze_number(uri):
     shiftx,shifty = getBestShift(gray)
     shifted = shift(gray,shiftx,shifty)
     gray = shifted
-    
-    #plt.imshow(gray)
-    #plt.show()
     
     gray = gray.reshape(1, 28, 28, 1)
     # prepare pixel data

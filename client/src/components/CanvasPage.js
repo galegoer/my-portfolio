@@ -19,7 +19,7 @@ function CanvasPage() {
   useEffect(() => {
     // const canvas = saveableCanvas.current;
     clearCanvas();
-  }, [saveableCanvas]);
+  }, []);
 
   const clearCanvas = () => {
     saveableCanvas.current.eraseAll();
