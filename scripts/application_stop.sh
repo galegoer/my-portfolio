@@ -15,8 +15,8 @@
 # echo "Stopping any existing node servers"
 # pkill node
 
-if [ $( docker ps -a | grep my-website-docker:latest | wc -l ) -gt 0 ]; then
-    docker rm $(docker stop $(docker ps -a -q --filter ancestor=my-website-docker:latest --format="{{.ID}}"))
+if [ $( docker ps -a | grep 090413310302.dkr.ecr.us-east-2.amazonaws.com/my-website-docker:latest | wc -l ) -gt 0 ]; then
+    docker rm $(docker stop $(docker ps -a -q --filter ancestor=090413310302.dkr.ecr.us-east-2.amazonaws.com/my-website-docker:latest --format="{{.ID}}"))
     docker rmi my-website-docker:latest -f
 fi
 
