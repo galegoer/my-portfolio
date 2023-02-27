@@ -20,6 +20,7 @@ COPY client/package*.json ./
 RUN npm install --force
 COPY client/src/ ./src
 COPY client/public/ ./public
+COPY client/.env ./
 RUN npm run build
 
 # FROM node:14 AS server-build
