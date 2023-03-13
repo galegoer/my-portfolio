@@ -15,7 +15,7 @@ function RandomVideo(props) {
         // get most recent random video
         // const VideoClass = Parse.Object.extend('VideoClass');
         let query = new Parse.Query('VideoClass');
-        query.ascending('createdAt');
+        query.descending('createdAt');
         query.limit(4);
         const videoIds = await query.find();
         // const videoIds = [];
@@ -50,7 +50,7 @@ function RandomVideo(props) {
           />
         </div>
           <h2 className="text-center mt-3 mb-3">Last 3 recommended videos</h2>
-            <div className="grid-container">
+            <div className="grid-container mb-4">
               {vidIds.slice(1).map(id => (
                   <div className="iframe-container">
                   <iframe

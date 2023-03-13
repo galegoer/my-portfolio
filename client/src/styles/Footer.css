@@ -1,0 +1,14 @@
+.appFooter {
+    /* bottom: 0; */
+    top: 100%;
+    width: 100%;
+    position: absolute;
+    /* height: 2.5rem;  */
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 4rem;
+}

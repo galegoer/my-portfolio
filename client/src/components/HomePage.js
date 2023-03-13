@@ -1,5 +1,4 @@
 import { Animator, ScrollContainer, ScrollPage, batch, Fade, FadeIn, Move, MoveIn, MoveOut, Sticky, StickyIn, ZoomIn } from 'react-scroll-motion';
-import NavBar from './NavBar';
 import Paper from '@mui/material/Paper';
 import TerminalIcon from '@mui/icons-material/Terminal';
 
@@ -20,8 +19,6 @@ function HomePage(props) {
     
     return (
       <>
-        <NavBar />
-
         <ScrollContainer>
           <ScrollPage>
             <Animator animation={batch(Fade(), Sticky(), MoveOut(0, -200))}>

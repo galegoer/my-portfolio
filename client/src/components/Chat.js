@@ -51,6 +51,7 @@ function Chat({ socket, username, room }) {
         <h3>Current Room: {room} </h3>
         
         <div style={{'width': 'calc(50%)', 'height': 'calc(95% - 106px)'}}>
+          {/* TODO: Adjust can only see the button in light theme (issues with CSS here) */}
           <ScrollToBottom className="h-100">
             <ul className="Messages-list">
               {messages.map(m => renderMessage(m))}
