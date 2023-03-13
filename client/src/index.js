@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 
 import { initializeParse } from '@parse/react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
 
 const parse_server_url = process.env.REACT_APP_PARSE_SERVER_URL;
 const parse_app_id = process.env.REACT_APP_PARSE_APP_ID;

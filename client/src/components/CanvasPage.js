@@ -51,7 +51,6 @@ function CanvasPage() {
 
   return (
     <>
-
       <div className="d-flex flex-column align-items-center justify-content-center text-center" style={{fontFamily: 'Playfair Display'}}>
         <h2 className="w-75 text-center">
           Draw a number using the canvas and the number that you drew will be guessed by a convolutional neural network for handwritten digit classification.
@@ -72,7 +71,7 @@ function CanvasPage() {
       />
 
 
-      <div className='d-flex justify-content-center'>
+      <div className='d-flex justify-content-center mb-5'>
 
         {/* <button onClick={() => {
         localStorage.setItem(
