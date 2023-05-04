@@ -1,9 +1,88 @@
-.card:hover::before {
-    opacity: 1;
+.skills-area {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
 }
 
-.card::before,
-.card::after {
+.skills-child {
+  /* display: flex;
+  margin: 10px 0 0 10px;
+  width: calc(100% * (1/4) - 10px - 1px);
+  justify-content: center;
+  flex: 1 1 calc(25% - 20px); */
+  flex: 0 0 19%; /* Set the width of each item to 19% */
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+section {
+    display: grid;
+    place-items: center;
+    align-content: center;
+    min-height: 100vh;
+}
+
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 2s;
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0)
+}
+
+
+@media(prefers-reduced-motion) {
+    .hidden {
+        transition: none;
+    }
+}
+
+body {
+    align-items: center;
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+    /* overflow: hidden; */
+    padding: 0px;
+}
+
+#cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;  
+    max-width: 916px;
+    width: calc(100% - 20px);
+    justify-content: center;
+}
+  
+#cards:hover > .home-card::after {
+    opacity: 1;
+}
+  
+.home-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    height: 260px;
+    flex-direction: column;
+    position: relative;
+    width: 300px;  
+}
+  
+.home-card:hover::before {
+    opacity: 1;
+}
+  
+.home-card::before,
+.home-card::after {
     border-radius: inherit;
     content: "";
     height: 100%;
@@ -14,135 +93,142 @@
     transition: opacity 500ms;
     width: 100%;
 }
-
-.card::before {
+  
+.home-card::before {
     background: radial-gradient(
-        800px circle at var(--mouse-x) var(--mouse-y), 
-        rgba(255, 255, 255, 0.06),
-        transparent 40%
+      800px circle at var(--mouse-x) var(--mouse-y), 
+      var(--radial-gradient-before),
+      transparent 40%
     );
     z-index: 3;
 }
-
-.card::after {  
-    background: radial-gradient(
-        600px circle at var(--mouse-x) var(--mouse-y), 
-        rgba(255, 255, 255, 0.4),
-        transparent 40%
+  
+.home-card::after {  
+    background: radial-gradient( 
+      600px circle at var(--mouse-x) var(--mouse-y), 
+      var(--radial-gradient-after), 
+      transparent 40% 
     );
     z-index: 1;
 }
-
-body {
-    /* height: 100vh;
-    width: 100vw;
-    background-color: black;
-    margin: 0rem; */
-    overflow: hidden;
-}
   
-#image-track {
+.home-card > .card-content {
+    background-color: var(--card-color);
+    border-radius: inherit;
     display: flex;
-    gap: 4vmin;
+    flex-direction: column;
+    flex-grow: 1;
+    inset: 1px;
+    padding: 10px;
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(0%, -50%); 
-    user-select: none; /* -- Prevent image highlighting -- */
+    z-index: 2;
 }
   
-#image-track > .image {
-    width: 40vmin;
-    height: 56vmin;
-    object-fit: cover;
-    object-position: 100% center;
-}
-  
-  /* -- YouTube Link Styles -- */
-  
-body.menu-toggled > .meta-link > span {
-    color: rgb(30, 30, 30);
-}
-  
-#source-link {
-    bottom: 60px;
-}
-  
-#source-link > i {
-    color: rgb(94, 106, 210);
-}
-  
-#yt-link > i {
-    color: rgb(239, 83, 80);
-}
-  
-.meta-link {
+.card-image {
     align-items: center;
-    backdrop-filter: blur(3px);
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
-    bottom: 10px;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
-    cursor: pointer;  
-    display: inline-flex;
-    gap: 5px;
-    left: 10px;
-    padding: 10px 20px;
-    position: fixed;
-    text-decoration: none;
-    transition: background-color 400ms, border-color 400ms;
-    z-index: 10000;
+    display: flex;
+    height: 140px;
+    justify-content: center;
+    overflow: hidden;
+    height: 100%;
 }
   
-.meta-link:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+.card-image > i {
+    font-size: 6em;
+    opacity: 0.25;
 }
   
-.meta-link > i, .meta-link > span {
+.card-info-wrapper {
+    align-items: center;
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-start;
+    padding: 0px 20px;
+}
+  
+.card-info {
+    align-items: flex-start;
+    display: flex;
+    gap: 10px;
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    margin: 0px;
+}
+  
+.card-info > i {  
+    font-size: 1em;
     height: 20px;
     line-height: 20px;
 }
   
-.meta-link > span {
-    color: white;
-    font-family: "Rubik", sans-serif;
-    font-weight: 500;
+.card-info-title > h3 {
+    color: rgb(240, 240, 240);
+    font-size: 1.1em;
+    line-height: 20px;
+}
+  
+.card-info-title > h4 {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85em;
+    margin-top: 8px;
 }
 
-@keyframes rotate {
-    from {
-      rotate: 0deg;
-    }
+.mx-10 {
+  margin-right: 10rem !important;
+  margin-left: 10rem !important;
+}
+
+
+@media(max-width: 1000px) {
+  body {
+      align-items: flex-start;  
+      overflow: auto;
+  }
     
-    50% {
-      scale: 1 1.5;
-    }
+  #cards {    
+      max-width: 1000px;
+      padding: 10px 0px;
+  }
     
-    to {
-      rotate: 360deg;
-    }
+  .card {
+      flex-shrink: 1;
+      width: calc(50% - 4px);
+  }
+}
+  
+@media(max-width: 500px) {
+  .home-card {
+      height: 180px;
+  }
+    
+  .card-image {
+      height: 80px;  
+  }
+    
+  .card-image > i {
+      font-size: 3em;
+  }
+      
+  .card-info-wrapper {
+      padding: 0px 10px;
+  }
+    
+  .card-info > i { 
+      font-size: 0.8em; 
+  }
+    
+  .card-info-title > h3 {
+      font-size: 0.9em;
   }
   
-  #blob {
-    background-color: white;
-    height: 34vmax;
-    aspect-ratio: 1;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    translate: -50% -50%;
-    border-radius: 50%;
-    background: linear-gradient(to right, aquamarine, mediumpurple);
-    animation: rotate 20s infinite;
-    opacity: 0.8;
+  .card-info-title > h4 {
+      font-size: 0.8em;
+      margin-top: 4px;
   }
+}
   
-  #blur {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    z-index: 0;
-    backdrop-filter: blur(12vmax);
+@media(max-width: 320px) {
+  .home-card {
+      width: 100%;
   }
+}
