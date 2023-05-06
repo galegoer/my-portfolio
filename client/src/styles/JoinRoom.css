@@ -171,18 +171,3 @@ body {
   max-height: 200px;
   width: 50%;
 }
-
-.skills-area {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  flex-wrap: wrap;
-}
-
-.skills-child {
-  display: flex;
-  margin: 10px 0 0 10px;
-  width: calc(100% * (1/4) - 10px - 1px);
-  justify-content: center;
-  flex: 1 1 calc(25% - 20px);
-}

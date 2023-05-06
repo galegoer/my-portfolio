@@ -1,86 +1,123 @@
-import { Animator, ScrollContainer, ScrollPage, batch, Fade, FadeIn, Move, MoveIn, MoveOut, Sticky, StickyIn, ZoomIn } from 'react-scroll-motion';
-import Paper from '@mui/material/Paper';
-import TerminalIcon from '@mui/icons-material/Terminal';
+import { useEffect, useRef } from 'react';
+import '../styles/HomePage.css';
+import HomeCard from './HomeCard';
+import MatrixBackground from './Matrix';
 
 
 function HomePage(props) {
-    
-    // const [vidIds, setVidIds] = useState([]); // maybe add default video?
-    const ZoomInScrollOut = batch(StickyIn(), FadeIn(), ZoomIn());
-    const FadeUp = batch(Fade(), Move(), Sticky());
 
-    // useEffect(() => {
-    //     provideVid();
-    // }, []);
+    const hiddenElsRef = useRef(null);
+    const cardsRef = useRef(null);
+    const hackerRef = useRef(null);
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    // async function provideVid() {
+    useEffect(() => {
+      const hiddenEls = hiddenElsRef.current.querySelectorAll(".hidden");
+      hiddenEls.forEach((el) => observer.observe(el));
+      hackerRef.current.addEventListener('mouseover', onMouseOver);
 
-    // }
+      cardsRef.current.addEventListener('mousemove', onMouseMove);
+      return () => {
+        cardsRef.current.removeEventListener('mousemove', onMouseMove);
+      };
+    }, []);
+
+    const onMouseOver = (e) => {
+      let iterations = 0;
+      const interval = setInterval(() => {
+        e.target.innerText = e.target.innerText.split("")
+        .map((letter, index) => {
+          if(index < iterations) {
+            return e.target.dataset.value[index];
+          }
+          return letters[Math.floor(Math.random() * 26)]
+        })
+        .join("");
+
+      if(iterations >= e.target.dataset.value.length) clearInterval(interval);
+      
+      iterations += 1 / 3;
+      }, 30);
+    }
+
+    const onMouseMove = (e) => {
+      const cards = cardsRef.current.querySelectorAll('.home-card');
+      for(const card of cards) {
+        const rect = card.getBoundingClientRect(),
+          x = e.clientX - rect.left,
+          y = e.clientY - rect.top;
+
+        card.style.setProperty("--mouse-x", `${x}px`);
+        card.style.setProperty("--mouse-y", `${y}px`);
+      };
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        } else {
+          entry.target.classList.remove('show');
+        }
+      })
+    })
     
     return (
-      <>
-        <ScrollContainer>
-          <ScrollPage>
-            <Animator animation={batch(Fade(), Sticky(), MoveOut(0, -200))}>
-              <div className='d-flex flex-column align-items-center text-center'>
-                <img height="200" width="200" src="memoji-thumbs-up.png" alt="memoji"/>
-                <div className='d-block' style={{fontSize: "30px"}}>
-                  <span>Hello, Welcome to my Page! 😀 
-                  I'm Eric a recent University of Toronto Computer Science Specialist graduate!
-                  Note this page is still under construction 🚧 Many new features are TBD... </span>
-                </div>
-                <div className='d-flex justify-content-around w-100'>
-                  <img height="100" src="uoft-logo.png" alt="uoft-logo"/>
-                  <TerminalIcon style={{ fontSize: 100 }} />
-                </div>
-              </div>
-            </Animator>
-          </ScrollPage>
-          <ScrollPage>
-            <Animator animation={ZoomInScrollOut}>
-              <span style={{ fontSize: "40px" }}>Here I'll show some of my projects, some games and resources I've found useful throughout the years. </span>
-            </Animator>
-          </ScrollPage>
-          <ScrollPage>
-            <Animator animation={FadeUp}>
-                <span className="d-flex justify-content-center" style={{ fontSize: "40px" }}>Some of my Skills ✨</span>
-                <div className="skills-area">
-                  <Paper sx={{'backgroundColor': 'lightgrey'}} className="skills-child" elevation={3}><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="python" /></Paper>
-                  <Paper sx={{'backgroundColor': 'lightgrey'}} className="skills-child" elevation={3}><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original-wordmark.svg" alt="Java"/></Paper>
-                  <Paper sx={{'backgroundColor': 'lightgrey'}} className="skills-child" elevation={3}><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"/></Paper>
-                  <Paper sx={{'backgroundColor': 'lightgrey'}} className="skills-child" elevation={3}><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" alt="Jenkins"/></Paper>
-                  <Paper sx={{'backgroundColor': 'lightgrey'}} className="skills-child" elevation={3}><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg" alt="React"/></Paper>
-                  <Paper sx={{'backgroundColor': 'lightgrey'}} className="skills-child" elevation={3}><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg" alt="HTML5"/></Paper>
-                  <Paper sx={{'backgroundColor': 'lightgrey'}} className="skills-child" elevation={3}><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain-wordmark.svg" alt="Firebase"/></Paper>
-                  <Paper sx={{'backgroundColor': 'lightgrey'}} className="skills-child" elevation={3}><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain-wordmark.svg" alt="Django"/></Paper>
-                  <Paper sx={{'backgroundColor': 'lightgrey'}} className="skills-child" elevation={3}><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original-wordmark.svg" alt="Docker"/></Paper>
-                  <Paper sx={{'backgroundColor': 'lightgrey'}} className="skills-child" elevation={3}><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original-wordmark.svg" alt="CSS3"/></Paper>
-                  <Paper sx={{'backgroundColor': 'lightgrey'}} className="skills-child" elevation={3}><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C"/></Paper>
-                  <Paper sx={{'backgroundColor': 'lightgrey'}} className="skills-child" elevation={3}><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="Bash"/></Paper>
-                  <Paper sx={{'backgroundColor': 'lightgrey'}} className="skills-child" elevation={3}><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg" alt="NodeJS"/></Paper>
-                  <Paper sx={{'backgroundColor': 'lightgrey'}} className="skills-child" elevation={3}><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original-wordmark.svg" alt="PostgreSQL"/></Paper>
-                  <Paper sx={{'backgroundColor': 'lightgrey'}} className="skills-child" elevation={3}><img  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-plain-wordmark.svg" alt="Ubuntu"/></Paper>
-                </div>
-            </Animator>
-          </ScrollPage>
-          <ScrollPage>
-            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%" }} >
-              <span style={{ fontSize: "40px" }}>
-                <Animator animation={MoveIn(-1000, 0)}>Interests TBD 👋🏻</Animator>
-                <Animator animation={MoveIn(1000, 0)}>Hello Temp Text 🙋🏻‍♀️</Animator>
-                <Animator animation={MoveOut(1000, 0)}>Good bye Temp Text ✋🏻</Animator>
-                <Animator animation={MoveOut(-1000, 0)}>See you</Animator>
-              </span>
+      <div ref={hiddenElsRef} className="mx-10">
+          <MatrixBackground />
+
+        <section className='hidden'>
+          <div ref={hackerRef} data-value="ERIC GALEGO" className='hacker-txt'>ERIC GALEGO</div>
+
+        </section>
+        <section className='hidden'>
+          <div className='txt-box d-flex flex-column align-items-center text-center'>
+            <img height="200" width="200" src="memoji-thumbs-up.png" alt="memoji"/>
+            <div className='d-block' style={{fontSize: "30px"}}>
+              <span>Hello, Welcome to my Page! 😀 
+              I'm Eric a recent University of Toronto Computer Science Specialist graduate!
+              Note this page is still under construction 🚧 Many new features are TBD... </span>
             </div>
-          </ScrollPage>
-          <ScrollPage>
-            <Animator animation={batch(Fade(), Sticky())}>
-              <span style={{ fontSize: "40px" }}>That's It... For Now</span>
-              <br/>
-            </Animator>
-          </ScrollPage>
-        </ScrollContainer>
-      </>
+          </div>
+        </section>
+        <section className='hidden'>
+          <div className='txt-box' style={{ fontSize: "40px" }}>Here I'll show some of my projects, some interests of mine, as well as some resources I've found useful throughout the years. </div>
+        </section>
+        <section className='hidden'>
+          {/* <div className="skills-area"> */}
+          <div className="d-flex justify-content-center txt-box mb-4">Some of my Skills ✨</div>
+            <div ref={cardsRef} id='cards'>
+              <HomeCard src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="python" title="Python" />
+              <HomeCard src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original-wordmark.svg" alt="java" title="Java" />
+              <HomeCard src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="javascript" title="JavaScript" />
+              <HomeCard src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" alt="jenkins" title="Jenkins" />
+              <HomeCard src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg" alt="react" title="React" />
+              <HomeCard src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg" alt="HTML5" title="HTML5" />
+              <HomeCard src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain-wordmark.svg" alt="firebase" title="Firebase" />
+              <HomeCard src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain-wordmark.svg" alt="django" title="Django" />
+              <HomeCard src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original-wordmark.svg" alt="docker" title="Docker" />
+              <HomeCard src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original-wordmark.svg" alt="css" title="CSS" />
+              <HomeCard src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C" title="C" />
+              <HomeCard src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="bash" title="Bash / Scripting" />
+              <HomeCard src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" title="NodeJS" />
+              <HomeCard src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original-wordmark.svg" alt="postgresql" title="PostgreSQL" />
+              <HomeCard src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-plain-wordmark.svg" alt="ubuntu" title="Ubuntu" />
+            </div>
+        </section>
+        <section className='hidden'>
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%" }} >
+            <div className="txt-box" style={{ fontSize: "40px" }}>
+              <span>Interests TBD 👋🏻</span>
+              <span>Resources TBD 🙋🏻‍♀️</span>
+              <span>Projects TBD ✋🏻</span>
+              <span>See you</span>
+            </div>
+          </div>
+        </section>
+        <section className='hidden'>
+          <div className="txt-box" style={{ fontSize: "40px" }}>That's It... For Now</div>
+        </section>
+      </div>
     );
 }
 
