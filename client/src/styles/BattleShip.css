@@ -1,0 +1,55 @@
+/* Change pixels (test dimensions for now) */
+.pieces-container {
+    width: 500px;
+    height: 60px;
+    background-color: aqua;
+}
+
+.game-board {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.block {
+    /* 10 by 10 based on game board dimensions (change later) */
+    width: 20px;
+    height: 20px;
+    border: solid 1px black;
+    box-sizing: border-box;
+}
+
+.game-container {
+    width: 500px;
+}
+
+.destroyer {
+    width: 20px;
+    background-color: brown;
+}
+
+.submarine {
+    width: 30px;
+    background-color: yellow;
+}
+
+.battleship {
+    width: 40px;
+    background-color: gray;
+}
+
+.cruiser {
+    width: 30px;
+    background-color: blue;
+}
+
+.carrier {
+    width: 50px;
+    background-color: palegreen;
+}
+
+.ship-preview {
+    height: 10px;
+    margin: 3px;
+}

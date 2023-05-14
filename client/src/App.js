@@ -6,6 +6,7 @@ import NavBar from './components/NavBar';
 import RandomVideo from './components/RandomVideo';
 import CanvasPage from './components/CanvasPage';
 import Footer from './components/Footer';
+import BattleShip from './components/BattleShip';
 
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
           <Route path="/song-rec" element={<RandomVideo />} />
 
           <Route path="/canvas" element={<CanvasPage />} />
+
+          <Route path="/battleship" element={<BattleShip />} />
           
           <Route path="*" element={<ErrorPage />} />
         </Routes>
