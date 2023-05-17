@@ -24,32 +24,55 @@
     width: 500px;
 }
 
-.destroyer {
+/* There should be a better way for this */
+.destroyer-inventory {
     width: 20px;
+}
+.destroyer {
     background-color: brown;
 }
 
-.submarine {
+.submarine-inventory {
     width: 30px;
+}
+.submarine {
     background-color: yellow;
 }
 
-.battleship {
+.battleship-inventory {
     width: 40px;
+}
+.battleship {
     background-color: gray;
 }
 
-.cruiser {
+.cruiser-inventory {
     width: 30px;
+}
+.cruiser {
     background-color: blue;
 }
 
-.carrier {
+.carrier-inventory {
     width: 50px;
+}
+.carrier {
     background-color: palegreen;
 }
 
 .ship-preview {
     height: 10px;
     margin: 3px;
+}
+
+.hover {
+    background-color: grey;
+}
+
+.hit {
+    background: red;
+}
+
+.miss {
+    background-color: white;
 }
