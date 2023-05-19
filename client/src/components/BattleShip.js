@@ -162,25 +162,24 @@ function BattleShip() {
 
     function computerTurn() {
         if (!gameOver) {
-            gameInfo.current.querySelector('#turn-display').textContent = 'Computers Turn';
-            gameInfo.current.querySelector('#info').textContent = 'Thinking...';
-
             setTimeout(() => {
                 let randomInd = Math.floor(Math.random() * width * width);
+                gameInfo.current.querySelector('#turn-display').textContent = 'Computers Turn';
+                gameInfo.current.querySelector('#info').textContent = 'Thinking...';
                 const allBoardBlocks = document.querySelectorAll('#player1 div');
-                // console.log(randomInd);
+                let classes = Array.from(allBoardBlocks[randomInd].classList);
 
-                if(allBoardBlocks[randomInd].classList.contains('taken') && allBoardBlocks[randomInd].classList.contains['hit']) {
+                if(classes.includes('hit') || classes.includes('miss')) {
                     computerTurn();
                     return;
-                } else if (allBoardBlocks[randomInd].classList.contains('taken') && !allBoardBlocks[randomInd].classList.contains('hit')) {
+                } else if (classes.includes('taken') && !classes.includes('hit')) {
                     allBoardBlocks[randomInd].classList.add('hit');
-                    gameInfo.current.querySelector('#info').textContent = 'The computer hit you!';
-                    let classes = Array.from(allBoardBlocks[randomInd].classList);
                     classes = classes.filter(className => className !== 'block' && className !== 'hit' && className !== 'taken');
                     player2Hits.push(...classes);
-                    checkScore('player2', player2Hits, player2SunkShips, ...classes);
                     computerTurn();
+                    checkScore('player2', player2Hits, player2SunkShips, ...classes);
+                    // switches back to 'Thinking...' text if computer hits something it already hit
+                    gameInfo.current.querySelector('#info').textContent = 'The computer hit you! Thinking...';
                     return;
                 } else {
                     gameInfo.current.querySelector('#info').textContent = 'The computer missed!';
@@ -226,7 +225,7 @@ function BattleShip() {
 
     function createBoard() {
         if (gameBoardRef.current.children.length === 0) {
-            const boardColors = ['aqua', 'lightcoral']
+            const boardColors = ['aqua', 'lightsalmon']
             for(let i=1; i < 3; i++) {
                 const gameBoardContainer = document.createElement('div');
                 gameBoardContainer.classList.add('game-board');
@@ -256,7 +255,7 @@ function BattleShip() {
     }
 
     return (
-      <>
+      <div className='d-flex justify-content-center flex-column align-items-center'>
         <div ref={gameInfo} className="game-info">
             <p>Turn: <span id="turn-display"></span></p>
             <p>Info: <span id="info"></span></p>
@@ -274,7 +273,7 @@ function BattleShip() {
 
         <button id="flip-button" onClick={flipShips}>FLIP</button>
         <button id="start-button" onClick={startGame}>START</button>
-      </>
+      </div>
   );
 }
 

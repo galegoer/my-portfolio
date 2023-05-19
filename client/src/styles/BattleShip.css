@@ -70,9 +70,22 @@
 }
 
 .hit {
-    background: red;
+    background: red !important;
 }
 
 .miss {
-    background-color: white;
+    background-color: white !important;
+}
+
+#player2 .destroyer,
+#player2 .submarine,
+#player2 .cruiser,
+#player2 .battleship,
+#player2 .carrier {
+    background-color: lightsalmon;
+}
+
+/* Not working for button */
+button, p {
+    font-family: 'Playfair Display', serif;
 }
