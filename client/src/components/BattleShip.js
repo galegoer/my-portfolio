@@ -121,7 +121,6 @@ function BattleShip() {
     }
 
     function checkScore(user, userHits, userSunkShips, shipName) {
-        console.log(shipName);
         const ship = ships.find(ship => ship['name'] === shipName);
         if (userHits.filter(storedShipName => storedShipName === shipName).length === ship.length) {
             gameInfo.current.querySelector('#info').textContent = `${user} sunk the opponents ${shipName} ship!`;
@@ -155,44 +154,44 @@ function BattleShip() {
             const allBoardBlocks = document.querySelectorAll('#player2 div');
             allBoardBlocks.forEach(block => block.replaceWith(block.cloneNode(true)));
             // TODO: change to handle if multiplayer
-            // setTimeout(computerTurn, 1000);
-            computerTurn();
+            setTimeout(computerTurn, 1000);
         }
     }
 
     function computerTurn() {
         if (!gameOver) {
-            setTimeout(() => {
-                let randomInd = Math.floor(Math.random() * width * width);
-                gameInfo.current.querySelector('#turn-display').textContent = 'Computers Turn';
-                gameInfo.current.querySelector('#info').textContent = 'Thinking...';
-                const allBoardBlocks = document.querySelectorAll('#player1 div');
-                let classes = Array.from(allBoardBlocks[randomInd].classList);
+            gameInfo.current.querySelector('#turn-display').textContent = 'Computers Turn';
+            gameInfo.current.querySelector('#info').textContent = 'Thinking...';
+                
+            // setTimeout(() => {
+            let randomInd = Math.floor(Math.random() * width * width);
+            
+            const allBoardBlocks = document.querySelectorAll('#player1 div');
+            let classes = Array.from(allBoardBlocks[randomInd].classList);
 
-                if(classes.includes('hit') || classes.includes('miss')) {
-                    computerTurn();
-                    return;
-                } else if (classes.includes('taken') && !classes.includes('hit')) {
-                    allBoardBlocks[randomInd].classList.add('hit');
-                    classes = classes.filter(className => className !== 'block' && className !== 'hit' && className !== 'taken');
-                    player2Hits.push(...classes);
-                    computerTurn();
-                    checkScore('player2', player2Hits, player2SunkShips, ...classes);
-                    // switches back to 'Thinking...' text if computer hits something it already hit
-                    gameInfo.current.querySelector('#info').textContent = 'The computer hit you! Thinking...';
-                    return;
-                } else {
-                    gameInfo.current.querySelector('#info').textContent = 'The computer missed!';
-                    allBoardBlocks[randomInd].classList.add('miss');
-                }
-                setTimeout(() => {
-                    player1Turn = true;
-                    gameInfo.current.querySelector('#info').textContent = 'Your Turn!';
-                    gameInfo.current.querySelector('#turn-display').textContent = 'Your Turn!';
-                    const allBoardBlocks = document.querySelectorAll('#player2 div');
-                    allBoardBlocks.forEach(block => block.addEventListener('click', handleClick));
-                }, 2000);
+            if(classes.includes('hit') || classes.includes('miss')) {
+                computerTurn();
+                return;
+            } else if (classes.includes('taken') && !classes.includes('hit')) {
+                gameInfo.current.querySelector('#info').textContent = 'The computer hit you! Thinking...';
+                allBoardBlocks[randomInd].classList.add('hit');
+                classes = classes.filter(className => className !== 'block' && className !== 'hit' && className !== 'taken');
+                player2Hits.push(...classes);
+                checkScore('player2', player2Hits, player2SunkShips, ...classes);
+                setTimeout(computerTurn, 1500);
+                return;
+            } else {
+                gameInfo.current.querySelector('#info').textContent = 'The computer missed!';
+                allBoardBlocks[randomInd].classList.add('miss');
+            }
+            setTimeout(() => {
+                player1Turn = true;
+                gameInfo.current.querySelector('#info').textContent = 'Your Turn!';
+                gameInfo.current.querySelector('#turn-display').textContent = 'Your Turn!';
+                const allBoardBlocks = document.querySelectorAll('#player2 div');
+                allBoardBlocks.forEach(block => block.addEventListener('click', handleClick));
             }, 2000);
+        // }, 1000);
         }
     }
 
