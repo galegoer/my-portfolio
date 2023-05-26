@@ -1,0 +1,91 @@
+/* Change pixels (test dimensions for now) */
+.pieces-container {
+    width: 500px;
+    height: 60px;
+    background-color: aqua;
+}
+
+.game-board {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.block {
+    /* 10 by 10 based on game board dimensions (change later) */
+    width: 20px;
+    height: 20px;
+    border: solid 1px black;
+    box-sizing: border-box;
+}
+
+.game-container {
+    width: 500px;
+}
+
+/* There should be a better way for this */
+.destroyer-inventory {
+    width: 20px;
+}
+.destroyer {
+    background-color: brown;
+}
+
+.submarine-inventory {
+    width: 30px;
+}
+.submarine {
+    background-color: yellow;
+}
+
+.battleship-inventory {
+    width: 40px;
+}
+.battleship {
+    background-color: gray;
+}
+
+.cruiser-inventory {
+    width: 30px;
+}
+.cruiser {
+    background-color: blue;
+}
+
+.carrier-inventory {
+    width: 50px;
+}
+.carrier {
+    background-color: palegreen;
+}
+
+.ship-preview {
+    height: 10px;
+    margin: 3px;
+}
+
+.hover {
+    background-color: grey;
+}
+
+.hit {
+    background: red !important;
+}
+
+.miss {
+    background-color: white !important;
+}
+
+#player2 .destroyer,
+#player2 .submarine,
+#player2 .cruiser,
+#player2 .battleship,
+#player2 .carrier {
+    background-color: lightsalmon;
+}
+
+/* Not working for button */
+button, p {
+    font-family: 'Playfair Display', serif;
+}

@@ -18,7 +18,7 @@ function NavBar() {
               <Nav.Link href="/canvas">Canvas</Nav.Link>
               <Nav.Link href="#pricing"></Nav.Link>
               <NavDropdown title="Temp Dropdown" id="collasible-nav-dropdown">
-                <NavDropdown.Item href="#action">Action</NavDropdown.Item>
+                <NavDropdown.Item href="/battleship">BattleShip</NavDropdown.Item>
                 <NavDropdown.Item href="#action">Another action</NavDropdown.Item>
                 <NavDropdown.Item href="#action">Something</NavDropdown.Item>
                 

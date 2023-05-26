@@ -46,6 +46,13 @@ function Chat({ socket, username, room }) {
     );
   }
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && e.shiftKey === false) {
+      e.preventDefault();
+      sendMessage();
+    }
+  }
+
   return (
       <>
         <h3>Current Room: {room} </h3>
@@ -67,6 +74,7 @@ function Chat({ socket, username, room }) {
               value={currMessage}
               autoFocus={true}
               className='chat-textarea'
+              onKeyDown={handleKeyDown}
             />
             <button className="send-button" onClick={sendMessage}><FontAwesomeIcon icon={faPaperPlane} /></button>
           </div>
