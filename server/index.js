@@ -33,8 +33,41 @@ const io = new Server(server, {
     },
 });
 
+const connections = [null, null];
+
 io.on("connection", (socket) => {
     console.log(`USER CONNECTED: ${socket.id}`);
+    let playerIndex = -1;
+
+    // Logic for battleships
+    socket.on('join_battleship', (data) => {
+        // socket.join(data);
+        for (const i in connections) {
+            if (connections[i] === null) {
+                playerIndex = i;
+                break;
+            }
+        }
+
+        socket.emit('player-number', playerIndex)
+        console.log(`Player ${playerIndex} has joined`)
+
+        if (playerIndex === -1) return;
+
+        connections[playerIndex] = false;
+
+        socket.broadcast.emit('player-connection', playerIndex);
+
+        socket.on('player-disconnect', () => {
+            console.log(`Player ${playerIndex} disconnected.`);
+            connections[playerIndex] = null;
+            socket.broadcast.emit('player-connection', playerIndex);
+        });
+    })
+
+    
+
+    // Logic for chat room
 
     socket.on('join_room', (data) => {
         socket.join(data);
@@ -50,6 +83,15 @@ io.on("connection", (socket) => {
     socket.on('disconnect', () => {
         console.log('User Disconnected', socket.id);
         console.log(io.sockets.adapter.rooms);
+
+        // TODO: This might run when someone leaves in chat room need to check
+        if (playerIndex !== -1) {
+            console.log(`Player ${playerIndex} disconnected`);
+            connections[playerIndex] = null;
+            //Tell everyone what player numbe just disconnected
+            socket.broadcast.emit('player-connection', playerIndex);
+        }
+        
     })
 });
 

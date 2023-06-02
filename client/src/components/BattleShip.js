@@ -1,10 +1,20 @@
 import '../styles/BattleShip.css';
 import { useEffect, useRef } from 'react'
+import io from 'socket.io-client';
 
 
 // May change later (games are usually 10 x 10)
 const width = 10;
 let angle = 0;
+
+let currentPlayer = 'player1'
+let gameMode = "";
+let playerNum = 0;
+let ready = false;
+let enemyReady = false;
+let allShipsPlaced = false;
+let shotFired = -1;
+
 class Ship {
     constructor(name, length) {
         this.name = name
@@ -105,19 +115,65 @@ function BattleShip() {
     }, []);
 
     // TODO: change all the gameInfo.current.querySelector (no need to call it every time)
-    function startGame() {
-        // so you can't keep pushing start
-        if (player1Turn === undefined) {
-            if (piecesRef.current.children.length !== 0) {
-                gameInfo.current.querySelector('#info').textContent = 'Please place all your pieces first!';
+
+    function joinSinglePlayer() {
+        gameMode = 'singlePlayer';
+        if (allShipsPlaced) {
+            const allBoardBlocks = document.querySelectorAll('#player2 div');
+            allBoardBlocks.forEach(block => block.addEventListener('click', handleClick));
+            player1Turn = true;
+            gameInfo.current.querySelector('#info').textContent = 'The game has begun!';
+            gameInfo.current.querySelector('#turn-display').textContent = 'Your Turn!';
+        } else {
+            gameInfo.current.querySelector('#info').textContent = 'Please place all your pieces first!';
+        }
+    }
+
+    function joinMultiplayer() {
+        const socket = io();
+        gameMode = 'multiPlayer';
+        document.getElementById('start-button').addEventListener('click', () => startMulti());
+
+        // Get player num
+        socket.on('player-number', num => {
+            document.getElementById('join-mult-button').disabled = true;
+            if (num === -1) {
+                document.querySelector('#info').innerHTML = '2 players are currently playing!';
             } else {
-                const allBoardBlocks = document.querySelectorAll('#player2 div');
-                allBoardBlocks.forEach(block => block.addEventListener('click', handleClick));
-                player1Turn = true;
-                gameInfo.current.querySelector('#info').textContent = 'The game has begun!';
-                gameInfo.current.querySelector('#turn-display').textContent = 'Your Turn!';
+                playerNum = parseInt(num)
+                if (playerNum === 1) currentPlayer = "enemy";
+
+                console.log(playerNum);
+                // socket.emit('check-players');
+            }
+        })
+
+        // TODO: Maybe make multiple rooms?
+        socket.emit('join_battleship');
+        
+        socket.on('player-connection', num => {
+            console.log(`Player number ${num} has connected or disconnected.`);
+            handleConnectionChange(num);
+        });
+
+        function startMulti() {
+            if(gameOver) return;
+            if(!ready) {
+                socket.emit('player-ready');
+                ready = true;
+                // playerReady(playerNum)
             }
         }
+
+        function handleConnectionChange(num) {
+            let player = `.p${parseInt(num)+1}`;
+            console.log(player);
+            document.querySelector(`${player} .connected span`).classList.toggle('green');
+            if (parseInt(num) === playerNum) {
+                document.querySelector(player).style.fontWeight = 'bold';
+            }
+        }
+
     }
 
     function checkScore(user, userHits, userSunkShips, shipName) {
@@ -257,7 +313,7 @@ function BattleShip() {
       <div className='d-flex justify-content-center flex-column align-items-center'>
         <div ref={gameInfo} className="game-info">
             <p>Turn: <span id="turn-display"></span></p>
-            <p>Info: <span id="info"></span></p>
+            <p>Info: <span id="info">Please place all your pieces first!</span></p>
         </div>
 
         <div ref={gameBoardRef} className="game-container d-flex justify-content-between mb-4"></div>
@@ -271,7 +327,22 @@ function BattleShip() {
         </div>
 
         <button id="flip-button" onClick={flipShips}>FLIP</button>
-        <button id="start-button" onClick={startGame}>START</button>
+        <button id="join-single-button" onClick={joinSinglePlayer}>SINGLE PLAYER START</button>
+        <button id="join-mult-button" onClick={joinMultiplayer}>JOIN MULTIPLAYER</button>
+        <button id="start-button">START MULTIPLAYER</button>
+        {/* TODO: Make visible only when clicking multiplayer */}
+        <div className='player-info'>
+            <div className="player p1">
+                Player 1
+                <div className='connected'>Connected <span></span></div>
+                <div className='ready'>Ready <span></span></div>
+            </div>
+            <div className="player p2">
+                Player 2
+                <div className='connected'>Connected <span></span></div>
+                <div className='ready'>Ready <span></span></div>
+            </div>
+        </div>
       </div>
   );
 }
