@@ -3,21 +3,12 @@ import '../styles/HomePage.css';
 import HomeCard from './HomeCard';
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 import 'react-awesome-slider/dist/styles.css';
-import { BiDownArrow } from 'react-icons/bi';
 
 
 function AboutMe(props) {
 
     const hiddenElsRef = useRef(null);
     const cardsRef = useRef(null);
-    const section1 = useRef();
-    const section2 = useRef();
-    const section3 = useRef();
-    const section4 = useRef();
-
-    function scrollTo(section) {
-        section.current.scrollIntoView({ behavior: "smooth" });
-    }
 
     useEffect(() => {
         const hiddenEls = hiddenElsRef.current.querySelectorAll(".hidden");
@@ -54,30 +45,21 @@ function AboutMe(props) {
 
     return (
         <div ref={hiddenElsRef} className="temp">
-            <section ref={section1} className='hidden section'>
-                <div className='d-flex flex-column'>
-                    <div className='txt-box d-flex flex-row align-items-center text-center mx-10'>
-                        <img height="200" width="200" src="memoji-thumbs-up.png" alt="memoji"/>
-                        <div className='d-block' style={{fontSize: "30px"}}>
-                            <span>Hello, Welcome to my Page! 😀 
-                            I'm Eric a recent University of Toronto Computer Science Specialist graduate!
-                            Note this page is still under construction 🚧 Many new features are TBD... </span>
-                        </div>
-                    </div>
-                    <div className='align-items-center text-center position-absolute bottom-0'>
-                        <i class="arrow down"></i>
-                    </div>
+            <section className='hidden section'>
+                <div className='txt-box d-flex flex-row align-items-center text-center mx-10'>
+                    <img className="memoji" src="memoji-thumbs-up.png" alt="memoji"/>
+                    <span>Hello, Welcome to my Page! 😀 I'm Eric a recent University of Toronto Computer Science Specialist graduate!
+                    Note this page is still under construction 🚧 Many new features are TBD... 
+                    </span>
                 </div>
-                {/* <BiDownArrow className="down-arrow" onClick={scrollTo} /> */}
             </section>
-            <section ref={section2} className='hidden section'>
-                <div className='txt-box' style={{ fontSize: "40px" }}>Here I'll show some of my projects, some interests of mine, as well as some resources I've found useful throughout the years. </div>
-                <BiDownArrow className="down-arrow" onClick={scrollTo} />
+            <section className='hidden section'>
+                <div className='txt-box mx-10'>Here I'll show some of my projects, some interests of mine, as well as some resources I've found useful throughout the years. </div>
             </section>
-            <section ref={section3} className='hidden section'>
+            <section className='hidden section'>
                 <div className="skills-area">
                     <div className="d-flex justify-content-center txt-box mb-4">Some of my Skills ✨</div>
-                    <div ref={cardsRef} className="bullshit" id='cards'>
+                    <div ref={cardsRef} id='cards'>
                         <HomeCard src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="python" title="Python" />
                         <HomeCard src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original-wordmark.svg" alt="java" title="Java" />
                         <HomeCard src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="javascript" title="JavaScript" />
@@ -95,19 +77,20 @@ function AboutMe(props) {
                         <HomeCard src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ubuntu/ubuntu-plain-wordmark.svg" alt="ubuntu" title="Ubuntu" />
                     </div>
                 </div>
-                <BiDownArrow className="down-arrow" onClick={scrollTo} />
             </section>
-            <section ref={section4} className='hidden section'>
+            <section className='hidden section'>
                 <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%" }} >
-                    <div className="txt-box" style={{ fontSize: "40px" }}>
+                    <div className="txt-box">
                         <span>Interests TBD 👋🏻</span>
                         <span>Resources TBD 🙋🏻‍♀️</span>
                         <span>Projects TBD ✋🏻</span>
                         <span>See you</span>
                     </div>
                 </div>
-                <BiDownArrow className="down-arrow" onClick={scrollTo} />
             </section>
+            {/* <section className='hidden section'> */}
+                {/* <div className="txt-box" style={{ fontSize: "40px" }}>That's It... For Now</div> */}
+            {/* </section> */}
         </div>
     )
 }

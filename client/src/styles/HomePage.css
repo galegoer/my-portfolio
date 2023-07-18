@@ -1,8 +1,58 @@
+/* Could also transfer to a .module.css file so we do not have to have !important */
+.awsBtn {
+    --slider-height-percentage: 57% !important;
+    --slider-transition-duration: 500ms !important;
+    --organic-arrow-thickness: 8px !important;
+    --organic-arrow-border-radius: 0px !important;
+    --organic-arrow-height: 40px !important;
+    --organic-arrow-color: #b2bdcc !important;
+    --content-background-color: var(--bg-color) !important;
+}
+
+.temp {
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.section {
+    height: 100vh;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: start;
+}
+
+.arrow {
+    border: solid #b2bdcc;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    width: 50px;
+    height: 50px;
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.down-arrow {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 40px;
+    height: 40px;
+    z-index: 2;
+}
+
 .hacker-txt {
   color: white;
   font-size: 5rem;
   font-family: "Space Mono", monospace;
   z-index: 3;
+  position: relative;
 }
 
 .txt-box {
@@ -13,11 +63,17 @@
   padding-top: 2rem; */
   padding: 2rem;
   text-align: center;
-  font-size: 40px;
+  font-size: 25px;
+}
+
+.memoji {
+    width: 200px;
+    height: 200px;
 }
 
 .skills-area {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-content: center;
   flex-wrap: wrap;
@@ -65,9 +121,10 @@ section {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;  
-    max-width: 916px;
+    max-width: 800px;
     width: calc(100% - 20px);
     justify-content: center;
+    align-self: center;
 }
   
 #cards:hover > .home-card::after {
@@ -79,7 +136,7 @@ section {
     border-radius: 10px;
     cursor: pointer;
     display: flex;
-    height: 260px;
+    height: 200px;
     flex-direction: column;
     position: relative;
     width: 300px;  
@@ -194,7 +251,7 @@ section {
   }
     
   #cards {    
-      max-width: 1000px;
+      max-width: 800px;
       padding: 10px 0px;
   }
     
@@ -204,14 +261,15 @@ section {
   }
 }
   
-@media(max-width: 500px) {
+@media(max-width: 750px) {
   .home-card {
-      height: 180px;
+    height: 100px;
+    width: 100%;
   }
     
-  .card-image {
+  /* .card-image {
       height: 80px;  
-  }
+  } */
     
   .card-image > i {
       font-size: 3em;
@@ -233,9 +291,22 @@ section {
       font-size: 0.8em;
       margin-top: 4px;
   }
+
+  .hacker-txt {
+    font-size: 3rem;
+  }
+
+  .txt-box {
+    font-size: 18px;
+  }
+
+  .memoji {
+    width: 100px;
+    height: 100px;
+  }
 }
   
-@media(max-width: 320px) {
+@media(max-width: 350px) {
   .home-card {
       width: 100%;
   }

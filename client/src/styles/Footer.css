@@ -1,9 +1,10 @@
 .appFooter {
     /* bottom: 0; */
-    top: 100%;
+    /* top: 100%;
     width: 100%;
-    position: absolute;
-    /* height: 2.5rem;  */
+    position: absolute; */
+    /* margin-top: auto; */
+    /* z-index: 1; */
 }
 
 .footer-container {
