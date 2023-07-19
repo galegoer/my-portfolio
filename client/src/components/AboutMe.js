@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import '../styles/HomePage.css';
 import HomeCard from './HomeCard';
+import Contact from './Contact';
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 import 'react-awesome-slider/dist/styles.css';
 
@@ -58,7 +59,7 @@ function AboutMe(props) {
             </section>
             <section className='hidden section'>
                 <div className="skills-area">
-                    <div className="d-flex justify-content-center txt-box mb-4">Some of my Skills ✨</div>
+                    <div className="d-flex justify-content-center align-self-center txt-box mb-4">Some of my Skills ✨</div>
                     <div ref={cardsRef} id='cards'>
                         <HomeCard src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="python" title="Python" />
                         <HomeCard src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original-wordmark.svg" alt="java" title="Java" />
@@ -88,9 +89,10 @@ function AboutMe(props) {
                     </div>
                 </div>
             </section>
-            {/* <section className='hidden section'> */}
-                {/* <div className="txt-box" style={{ fontSize: "40px" }}>That's It... For Now</div> */}
-            {/* </section> */}
+            {/* Section 4 (Contact) */}
+            <section className='hidden section'>
+                <Contact />
+            </section>
         </div>
     )
 }
