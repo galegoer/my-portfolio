@@ -45,7 +45,7 @@ function AboutMe(props) {
     });
 
     return (
-        <div ref={hiddenElsRef} className="temp">
+        <div ref={hiddenElsRef}>
             <section className='hidden section'>
                 <div className='txt-box d-flex flex-row align-items-center text-center mx-10'>
                     <img className="memoji" src="memoji-thumbs-up.png" alt="memoji"/>
