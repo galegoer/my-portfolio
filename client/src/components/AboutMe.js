@@ -4,6 +4,7 @@ import HomeCard from './HomeCard';
 import Contact from './Contact';
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 import 'react-awesome-slider/dist/styles.css';
+import Project from './Project';
 
 
 function AboutMe(props) {
@@ -46,17 +47,23 @@ function AboutMe(props) {
 
     return (
         <div ref={hiddenElsRef}>
+            {/* Section 1 (About Me) */}
             <section className='hidden section'>
                 <div className='txt-box d-flex flex-row align-items-center text-center mx-10'>
                     <img className="memoji" src="memoji-thumbs-up.png" alt="memoji"/>
                     <span>Hello, Welcome to my Page! 😀 I'm Eric a recent University of Toronto Computer Science Specialist graduate!
-                    Note this page is still under construction 🚧 Many new features are TBD... 
+                    My journey into the world of technology and coding began during my high school years when I was first introduced to software development.
+                    One of the most rewarding aspects of my coding journey has been the ability to automate tasks and streamline processes in my day-to-day life.
+                    Through my work, I strive to contribute positively to the ever-evolving landscape of technology, making a difference in the lives of people worldwide.
+                    
+                    If you have any questions or would like to collaborate on exciting projects, feel free to reach out through the contact form at the bottom of this page. 
+                    Let's build a brighter, more connected future together through the power of technology!
+                    
+                    Note this page is still under construction 🚧 New features are TBD... 
                     </span>
                 </div>
             </section>
-            <section className='hidden section'>
-                <div className='txt-box mx-10'>Here I'll show some of my projects, some interests of mine, as well as some resources I've found useful throughout the years. </div>
-            </section>
+            {/* Section 2 (Skills) TODO: Refactor */}
             <section className='hidden section'>
                 <div className="skills-area">
                     <div className="d-flex justify-content-center align-self-center txt-box mb-4">Some of my Skills ✨</div>
@@ -79,17 +86,15 @@ function AboutMe(props) {
                     </div>
                 </div>
             </section>
+            {/* Section 3 (Projects) */}
             <section className='hidden section'>
-                <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100%" }} >
-                    <div className="txt-box">
-                        <span>Interests TBD 👋🏻</span>
-                        <span>Resources TBD 🙋🏻‍♀️</span>
-                        <span>Projects TBD ✋🏻</span>
-                        <span>See you</span>
-                    </div>
+                <div className=''>
+                    <h3>Projects</h3>
+                        {/* Map Projects */}
+                        <Project />
                 </div>
             </section>
-            {/* Section 4 (Contact) */}
+            {/* Section 4 (Contact Me) */}
             <section className='hidden section'>
                 <Contact />
             </section>

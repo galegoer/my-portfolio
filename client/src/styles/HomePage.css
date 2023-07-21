@@ -14,14 +14,6 @@
     overflow-y: scroll;
 }
 
-.section {
-    height: 100vh;
-    min-height: 100vh;
-    justify-content: center;
-    align-items: center;
-    scroll-snap-align: start;
-}
-
 .arrow {
     border: solid #b2bdcc;
     border-width: 0 3px 3px 0;
@@ -63,8 +55,8 @@
   padding-top: 2rem; */
   padding: 2rem;
   text-align: center;
-  font-size: 25px;
-  width: 50%;
+  font-size: 1.25rem;
+  width: 75%;
 }
 
 .memoji {
@@ -95,7 +87,8 @@ section {
     display: grid;
     place-items: center;
     align-content: center;
-    min-height: 100vh;
+    height: 100vh;
+    margin-bottom: 5rem;
 }
 
 .hidden {
@@ -120,6 +113,7 @@ section {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 50vw;
+    margin-top: 5rem;
 }
   
 .contact-form h2 {
@@ -352,7 +346,7 @@ button[type="submit"]:hover {
   }
 
   .txt-box {
-    font-size: 18px;
+    font-size: 1rem;
   }
 
   .memoji {

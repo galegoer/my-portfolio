@@ -5,6 +5,7 @@ import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 import 'react-awesome-slider/dist/styles.css';
 import AboutMe from './AboutMe';
+import SiteFeatures from './SiteFeatures';
 
 
 function HomePage(props) {
@@ -29,20 +30,23 @@ function HomePage(props) {
         iterations += 1 / 3;
       }, 30);
     }
-    
+
     return (
-        <AwesomeSlider className="awsBtn" animation="cubeAnimation" fillParent={true} bullets={false} mobileTouch={true} buttons={true}>
-          {/* Section 1 */}     
-          <div>
-            <MatrixBackground />
-            <div ref={hackerRef} onMouseMove={onMouseOver} data-value="ERIC GALEGO" className='hacker-txt'>ERIC GALEGO</div>
-          </div>
-          {/* Section 2 */}
-          <div>
-            <AboutMe />
-          </div>
-        
-        </AwesomeSlider>
+      <AwesomeSlider className="awsBtn" animation="cubeAnimation" fillParent={true} bullets={false} mobileTouch={true} buttons={true}>
+        {/* Section 1 */}
+        <div>
+          <MatrixBackground />
+          <div ref={hackerRef} onMouseMove={onMouseOver} data-value="ERIC GALEGO" className='hacker-txt'>ERIC GALEGO</div>
+        </div>
+        {/* Section 2 */}
+        <div className='temp'>
+          <AboutMe />
+        </div>
+        {/* Section 3 */}
+        <div className='temp'>
+          <SiteFeatures />
+        </div>
+      </AwesomeSlider>
     );
 }
 
