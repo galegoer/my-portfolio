@@ -1,0 +1,39 @@
+{
+    "motm": {
+        "name": "Motm",
+        "imageUrl": "motm-ui.png",
+        "info": "Social media platform that helps user connect on their favourite pieces of media including movies, shows, video games, books, music.",
+        "highlights": ["Engineered a CI/CD pipeline via Github Actions to host live preview sites on PRs to view and test newly added features.",
+                        "Implemented caching to reduce database costs when responding to redundant user actions.",
+                        "Incorporated Firebase Authentication to allow users to easily sign up and begin rating and reviewing their favorite pieces of media."],
+        "projectUrl": "https://github.com/apps-of-the-millennium/motm",
+        "tags": ["React","Firebase","JavaScript","Github", "Cypress", "Github Actions", "REST APIs"]
+    },
+    "restify": {
+        "name": "RESTify",
+        "imageUrl": "",
+        "info": "Restify is a social media platform for restaurants where users can search, follow, like, and comment on restaurants. Moreover, restaurant owners can create blog posts and upload their menus there.",
+        "highlights": ["Designed a relational SQLite database system to interact with complex data using REST APIs that interact with users, blogs, and restaurants and assure the following of the principles of database design.",
+                        "Formulated a script to populate the database with 100+ fake accounts to visualize and test changes to the platform.",
+                        "Implemented pagination to decrease API response load, creating a seamless user experience when making API calls."],
+        "projectUrl": "https://github.com/tanejavipul/RESTify",
+        "tags": ["JavaScript", "Python","Django","React","HTML","CSS","Bootstrap","SQLite"]
+    },
+    "playlistdownloader": {
+        "name": "Automation Projects",
+        "imageUrl": "yt-downloader-ui.png",
+        "info": "Developed a script that routinely checks for changes to a YouTube playlist and automatically downloads and syncs new songs to my phone. Utilized YouTube and Spotify REST APIs along with python libraries to access user information and transfer playlists from YouTube to Spotify",
+        "highlights": ["aa"],
+        "projectUrl": "https://github.com/galegoer/playlist-downloader",
+        "tags": ["Python","REST APIs","Jenkins"]
+    },
+    "paint": {
+        "name": "Paint Project",
+        "imageUrl": "",
+        "info": "Created an application similar to Microsoft Paint in Java using the MVC model and Object Oriented Programming.",
+        "highlights": ["Utilized design patterns such as factory and singleton to implement reusable solutions for a better code base design.",
+                        "Communicated and collaborated in a group environment that simulated industry standards such as daily scrum meetings and bug-tracking."],
+        "projectUrl": "https://github.com/galegoer/paint-project",
+        "tags": ["Java","OOP","MVC","Design Patterns","JUnit","Scrum"]
+    }
+}
