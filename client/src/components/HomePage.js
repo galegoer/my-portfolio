@@ -5,6 +5,7 @@ import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 import 'react-awesome-slider/dist/styles.css';
 import AboutMe from './AboutMe';
+import Projects from './Projects';
 import SiteFeatures from './SiteFeatures';
 
 
@@ -44,7 +45,7 @@ function HomePage(props) {
         </div>
         {/* Section 3 */}
         <div className='temp'>
-          <SiteFeatures />
+          <Projects />
         </div>
       </AwesomeSlider>
     );

@@ -1,17 +1,7 @@
 {
-    "motm": {
-        "name": "Motm",
-        "imageUrl": "motm-ui.png",
-        "info": "Social media platform that helps user connect on their favourite pieces of media including movies, shows, video games, books, music.",
-        "highlights": ["Engineered a CI/CD pipeline via Github Actions to host live preview sites on PRs to view and test newly added features.",
-                        "Implemented caching to reduce database costs when responding to redundant user actions.",
-                        "Incorporated Firebase Authentication to allow users to easily sign up and begin rating and reviewing their favorite pieces of media."],
-        "projectUrl": "https://github.com/apps-of-the-millennium/motm",
-        "tags": ["React","Firebase","JavaScript","Github", "Cypress", "Github Actions", "REST APIs"]
-    },
-    "restify": {
+    "1": {
         "name": "RESTify",
-        "imageUrl": "",
+        "imageUrl": "restify3.png",
         "info": "Restify is a social media platform for restaurants where users can search, follow, like, and comment on restaurants. Moreover, restaurant owners can create blog posts and upload their menus there.",
         "highlights": ["Designed a relational SQLite database system to interact with complex data using REST APIs that interact with users, blogs, and restaurants and assure the following of the principles of database design.",
                         "Formulated a script to populate the database with 100+ fake accounts to visualize and test changes to the platform.",
@@ -19,20 +9,33 @@
         "projectUrl": "https://github.com/tanejavipul/RESTify",
         "tags": ["JavaScript", "Python","Django","React","HTML","CSS","Bootstrap","SQLite"]
     },
-    "playlistdownloader": {
+    "2": {
+        "name": "Motm",
+        "imageUrl": "motm-ui.png",
+        "info": "Social media platform that helps users connect on their favourite pieces of media including movies, shows, video games, books, and music.",
+        "highlights": ["Engineered a CI/CD pipeline via Github Actions to host live preview sites on PRs to view and test newly added features.",
+                        "Implemented caching to reduce database costs when responding to redundant user actions.",
+                        "Incorporated Firebase Authentication to allow users to easily sign up and begin rating and reviewing their favorite pieces of media."],
+        "projectUrl": "https://github.com/apps-of-the-millennium/motm",
+        "tags": ["React","Firebase","JavaScript","Github", "Cypress", "Github Actions", "REST APIs"]
+    },
+    "3": {
         "name": "Automation Projects",
         "imageUrl": "yt-downloader-ui.png",
-        "info": "Developed a script that routinely checks for changes to a YouTube playlist and automatically downloads and syncs new songs to my phone. Utilized YouTube and Spotify REST APIs along with python libraries to access user information and transfer playlists from YouTube to Spotify",
-        "highlights": ["aa"],
+        "info": "Developed several scripts and programs that handle music downloads and metadata updates via various libraries and APIs as well as creating and updating playlists.",
+        "highlights": ["Routinely checks for updates via Jenkins to a YouTube playlist and automatically downloads and syncs new songs to my phone",
+                        "Utilized Python libraries in conjunction with Spotify APIs to retrieve cover art of music",
+                        "Employed ffmpeg and the command line to modify audio quality, codecs, and song tags",
+                        "Extended capability to transfer playlists from YouTube directly to a Spotify playlist"],
         "projectUrl": "https://github.com/galegoer/playlist-downloader",
-        "tags": ["Python","REST APIs","Jenkins"]
+        "tags": ["Python","REST APIs","Jenkins","ffmpeg", "CMD"]
     },
-    "paint": {
+    "4": {
         "name": "Paint Project",
-        "imageUrl": "",
-        "info": "Created an application similar to Microsoft Paint in Java using the MVC model and Object Oriented Programming.",
-        "highlights": ["Utilized design patterns such as factory and singleton to implement reusable solutions for a better code base design.",
-                        "Communicated and collaborated in a group environment that simulated industry standards such as daily scrum meetings and bug-tracking."],
+        "imageUrl": "paint-app.png",
+        "info": "Created an application similar to Microsoft Paint in Java using the MVC model and Object Oriented Programming",
+        "highlights": ["Utilized design patterns such as factory and singleton to implement reusable solutions for a better code base design",
+                        "Communicated and collaborated in a group environment that simulated industry standards such as daily scrum meetings and bug-tracking"],
         "projectUrl": "https://github.com/galegoer/paint-project",
         "tags": ["Java","OOP","MVC","Design Patterns","JUnit","Scrum"]
     }
