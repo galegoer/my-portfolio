@@ -29,7 +29,7 @@ function Projects(props) {
 
     return (
         <div ref={projectsRef} className='project-page'>
-            <h3 className='txt-box mb-3'>Projects</h3>
+            <h3 className='txt-box mb-4'>Projects</h3>
             {projects.map(projName => (
                 <Project name={projName} />
             ))}

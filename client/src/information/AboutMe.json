@@ -1,7 +1,7 @@
 {
     "1": {
         "name": "RESTify",
-        "imageUrl": "restify3.png",
+        "imageUrl": "restify3-new.png",
         "info": "Restify is a social media platform for restaurants where users can search, follow, like, and comment on restaurants. Moreover, restaurant owners can create blog posts and upload their menus there.",
         "highlights": ["Designed a relational SQLite database system to interact with complex data using REST APIs that interact with users, blogs, and restaurants and assure the following of the principles of database design.",
                         "Formulated a script to populate the database with 100+ fake accounts to visualize and test changes to the platform.",
@@ -11,7 +11,7 @@
     },
     "2": {
         "name": "Motm",
-        "imageUrl": "motm-ui.png",
+        "imageUrl": "motm-ui-new.png",
         "info": "Social media platform that helps users connect on their favourite pieces of media including movies, shows, video games, books, and music.",
         "highlights": ["Engineered a CI/CD pipeline via Github Actions to host live preview sites on PRs to view and test newly added features.",
                         "Implemented caching to reduce database costs when responding to redundant user actions.",
@@ -32,7 +32,7 @@
     },
     "4": {
         "name": "Paint Project",
-        "imageUrl": "paint-app.png",
+        "imageUrl": "paint-app-new.png",
         "info": "Created an application similar to Microsoft Paint in Java using the MVC model and Object Oriented Programming",
         "highlights": ["Utilized design patterns such as factory and singleton to implement reusable solutions for a better code base design",
                         "Communicated and collaborated in a group environment that simulated industry standards such as daily scrum meetings and bug-tracking"],

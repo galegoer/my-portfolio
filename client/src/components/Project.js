@@ -8,9 +8,9 @@ function Project(props) {
     
     return (
         <div className='project-hover home-card skills-child'>
-            <div className='d-flex'>
-                <img className="project-img w-50" width="200" height="48" alt={props.name} src={projectInfo[props.name]["imageUrl"]}></img>
-                <div className='flex-column w-50 p-5'>
+            <div className='project-display'>
+                <img className="project-img" alt={props.name} src={projectInfo[props.name]["imageUrl"]}></img>
+                <div className='flex-column p-4'>
                     <div className='project-name'>
                         <a target="_blank" href={projectInfo[props.name]["projectUrl"]} rel="noreferrer">{projectInfo[props.name]["name"]}</a>
                         <RiArrowRightUpLine className='project-arrow' />

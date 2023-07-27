@@ -57,7 +57,6 @@
     border-radius: 25px;
     padding: 2rem;
     text-align: center;
-    font-size: 1.25rem;
     width: 75%;
 }
 
@@ -70,12 +69,11 @@
     padding-bottom: 7.5rem;
 }
 
-/* TODO: Change for all browsers */
 .project-img {
     max-width: 100%;
     height: auto;
     border-radius: 5%;
-    /* height: 200px; */
+    width: 75%;
 }
 
 .project-name {
@@ -95,7 +93,6 @@
 }
 
 .project-txt {
-    font-size: 1.25rem;
     padding: 1.5rem;
     align-self: baseline;
 }
@@ -125,15 +122,18 @@
 }
 
 .project-hover {
-    display: flex;
     width: 60%;
     align-items: center;
-    flex-direction: column;
     margin-bottom: 1.5rem;
     align-self: center;
 }
 
+.project-display {
+    display: flex;
+}
+
 .memoji {
+    max-width: 50%;
     width: 200px;
     /* height: 200px; */
     transform: translatey(0px);
@@ -272,6 +272,7 @@ button[type="submit"]:hover {
     width: 300px;
     height: 200px;
 }
+
 .home-card {
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
@@ -383,6 +384,12 @@ button[type="submit"]:hover {
 }
 
 
+@media(max-width: 1500px) {
+    .project-display {
+        display: contents;
+    }
+}
+
 @media(max-width: 1000px) {
   body {
       align-items: flex-start;  
@@ -401,7 +408,7 @@ button[type="submit"]:hover {
 }
   
 @media(max-width: 750px) {
-  .home-card {
+  .skills-area .home-card {
     height: 100px;
     width: 100%;
   }
@@ -436,13 +443,9 @@ button[type="submit"]:hover {
   }
 
   .txt-box {
-    font-size: 1rem;
+    flex-direction: column;
   }
 
-  .memoji {
-    width: 100px;
-    height: 100px;
-  }
 }
   
 @media(max-width: 350px) {

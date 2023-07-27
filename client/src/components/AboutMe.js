@@ -45,7 +45,7 @@ function AboutMe(props) {
         <div ref={hiddenElsRef}>
             {/* Section 1 (About Me) */}
             <section className='hidden section'>
-                <div className='txt-box flex-row mx-10'>
+                <div className='txt-box'>
                     <img className="memoji" src="memoji-thumbs-up.png" alt="memoji"/>
                     <span>Hello, Welcome to my site! 😀 I'm Eric a recent University of Toronto Computer Science Specialist graduate!
                     My journey into the world of technology and coding began during my high school years when I was first introduced to software development.
@@ -60,7 +60,7 @@ function AboutMe(props) {
             {/* Section 2 (Skills) TODO: Refactor */}
             <section className='hidden section'>
                 <div className="skills-area">
-                    <div className="txt-box mb-4">Some of my Skills ✨</div>
+                    <h3 className="txt-box mb-4">Some of my Skills ✨</h3>
                     <div ref={cardsRef} id='cards'>
                         <HomeCard src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="python" title="Python" />
                         <HomeCard src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original-wordmark.svg" alt="java" title="Java" />
