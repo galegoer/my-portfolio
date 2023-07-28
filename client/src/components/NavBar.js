@@ -1,7 +1,7 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import SiteThemeSelector from './SiteThemeSelector';
 
 
 function NavBar() {
@@ -15,23 +15,12 @@ function NavBar() {
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">
                 <Nav.Link href="/song-rec">Song Recommendation</Nav.Link>
-                <Nav.Link href="/canvas">Canvas</Nav.Link>
-                <Nav.Link href="#pricing"></Nav.Link>
-                <NavDropdown title="Temp Dropdown" id="collasible-nav-dropdown">
-                  <NavDropdown.Item href="/battleship">BattleShip</NavDropdown.Item>
-                  <NavDropdown.Item href="#action">Another action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action">Something</NavDropdown.Item>
-                  
-                  <NavDropdown.Divider />
-                  
-                  <NavDropdown.Item href="#action">
-                    Separated link
-                  </NavDropdown.Item>
-                </NavDropdown>
+                <Nav.Link href="/chat">Chat Rooms</Nav.Link>
+                <Nav.Link href="/battleship">BattleShip</Nav.Link>
+                <Nav.Link href="/canvas">Number Detector</Nav.Link>
               </Nav>
               <Nav>
-                <Nav.Link href="/chat">Chat Rooms</Nav.Link>
-                <Nav.Link eventKey={2} href="#temp">Temp</Nav.Link>
+                <SiteThemeSelector />
               </Nav>
             </Navbar.Collapse>
           </Container>

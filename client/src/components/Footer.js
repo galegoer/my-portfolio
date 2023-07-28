@@ -20,14 +20,9 @@ const Footer = () => {
   }
   return (
     <footer className="appFooter">
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Container>
-          <Nav className='me-auto'>
-            <div className="footer-container">
-              <SiteThemeSelector />
-            </div>
-          </Nav>
-          <Nav className='d-flex flex-row'>
+      <Navbar bg="dark" variant="dark">
+        <Container className='justify-content-end'>
+          <Nav>
             <Nav.Link target="_blank" href="https://www.github.com/galegoer"><AiFillGithub style={{fontSize: "2.5em"}} /></Nav.Link>
             <Nav.Link className='ms-2' target="_blank" href="https://www.linkedin.com/eric-galego"><AiFillLinkedin style={{fontSize: "2.5em"}} /></Nav.Link>
             <Nav.Link className='ms-2' disabled target="_blank" href="https://www.discord.com"><FaDiscord style={{fontSize: "2.5em"}} /></Nav.Link>
