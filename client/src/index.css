@@ -16,6 +16,9 @@
   --card-color: rgb(23, 23, 23);
   --radial-gradient-before: rgba(255, 255, 255, 0.06);
   --radial-gradient-after: rgba(255, 255, 255, 0.4);
+
+  /* --radial-gradient-before: rgba(29, 78, 216, 0.15); */
+  /* --radial-gradient-after: rgba(29, 78, 216, 0.46); */
 }
 
 /*has global variables and more: ALSO ACTS AS DEFAULT SCHEME COLORS/VALUES WHEN A SPECIFIC THEME IS NOT DEFINED*/ 
@@ -23,8 +26,12 @@
   --color: rgb(20, 20, 20);
   --bg-color: aliceblue;
   --card-color: rgb(225, 222, 222);
-  --radial-gradient-before:rgba(79, 75, 75, 0.2);
-  --radial-gradient-after:rgba(0, 0, 0, 0.88);
+  /* --radial-gradient-before:rgba(79, 75, 75, 0.2);
+  --radial-gradient-after:rgba(0, 0, 0, 0.88); */
+
+  --radial-gradient-before: rgba(29, 78, 216, 0.15);
+  --radial-gradient-after: rgba(29, 78, 216, 0.46);
+
   --color-background: rgb(232,236,239);
   --color-background-dark: #c9c7c7;
   --color-background-grey: #f1f1f1;

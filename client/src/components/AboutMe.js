@@ -4,7 +4,6 @@ import HomeCard from './HomeCard';
 import Contact from './Contact';
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 import 'react-awesome-slider/dist/styles.css';
-import Project from './Project';
 
 
 function AboutMe(props) {

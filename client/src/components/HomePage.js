@@ -47,6 +47,10 @@ function HomePage(props) {
         <div className='temp'>
           <Projects />
         </div>
+        {/* Section 4 */}
+        <div className='temp'>
+          <SiteFeatures />
+        </div>
       </AwesomeSlider>
     );
 }

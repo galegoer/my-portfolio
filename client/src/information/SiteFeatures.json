@@ -1,0 +1,30 @@
+{
+    "1": {
+        "name": "Song Recommendation",
+        "imageUrl": "",
+        "info": "Weekly Song Recommendation program that runs a JavaScript job. Utilizes Back4App to run a cloud job weekly. Currently random selections from a YouTube playlist.",
+        "projectUrl": "/song-rec",
+        "tags": ["Google APIs","JavaScript","Back4App"]
+    },
+    "2": {
+        "name": "Chat Rooms",
+        "imageUrl": "",
+        "info": "Chat Rooms utilizing socket.io to chat with other visitors on my site.",
+        "projectUrl": "/chat",
+        "tags": ["Express","Socket.io","React","HTML","CSS","EC2"]
+    },
+    "3": {
+        "name": "Handwritten Number Detector",
+        "imageUrl": "",
+        "info": "Application utilizing a Convolutional Neural Network (CNN) for handwritten digit classification. Draw a number in the canvas and it will be sent to a running EC2 instance to guess the number drawn.",
+        "projectUrl": "/canvas",
+        "tags": ["Python","Tensorflow","Numpy","FastAPI","EC2","Git"]
+    },
+    "4": {
+        "name": "BattleShip",
+        "imageUrl": "",
+        "info": "Rendition of battleship hosted on my site. Multiplayer in progress currently only player vs CPU.",
+        "projectUrl": "/battleship",
+        "tags": ["JavaScript","React","Express","HTML","CSS"]
+    }
+}

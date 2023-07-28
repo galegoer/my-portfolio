@@ -9,7 +9,7 @@ function Projects(props) {
 
     const projectsRef = useRef(null);
     // TODO: Change from literal
-    const projects = ["1", "2", "3", "4"];
+    const projects = ["1", "2", "3", "4", "5"];
 
     useEffect(() => {
         projectsRef.current.addEventListener('mousemove', onMouseMove);

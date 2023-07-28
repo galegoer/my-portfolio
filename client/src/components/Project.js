@@ -9,7 +9,7 @@ function Project(props) {
     return (
         <div className='project-hover home-card skills-child'>
             <div className='project-display'>
-                <img className="project-img" alt={props.name} src={projectInfo[props.name]["imageUrl"]}></img>
+                <img className="project-img" alt="" src={projectInfo[props.name]["imageUrl"]}></img>
                 <div className='flex-column p-4'>
                     <div className='project-name'>
                         <a target="_blank" href={projectInfo[props.name]["projectUrl"]} rel="noreferrer">{projectInfo[props.name]["name"]}</a>

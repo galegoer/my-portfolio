@@ -20,6 +20,16 @@
         "tags": ["React","Firebase","JavaScript","Github", "Cypress", "Github Actions", "REST APIs"]
     },
     "3": {
+        "name": "Handwritten Number Detector",
+        "imageUrl": "",
+        "info": "Application utilizing a Convolutional Neural Network (CNN) for handwritten digit classification. Images of numbers can either be analyzed from a hand drawn image or a data uri.",
+        "highlights": ["Developed a Convolutional Neural Network for handwritten digit classification.",
+                        "Achieved 98.6% test accuracy.",
+                        "Live example can be tested on this site at the link above."],
+        "projectUrl": "http://ec2-3-128-207-4.us-east-2.compute.amazonaws.com/canvas",
+        "tags": ["Python","Tensorflow","Numpy","Git"]
+    },
+    "4": {
         "name": "Automation Projects",
         "imageUrl": "yt-downloader-ui.png",
         "info": "Developed several scripts and programs that handle music downloads and metadata updates via various libraries and APIs as well as creating and updating playlists.",
@@ -30,7 +40,7 @@
         "projectUrl": "https://github.com/galegoer/playlist-downloader",
         "tags": ["Python","REST APIs","Jenkins","ffmpeg", "CMD"]
     },
-    "4": {
+    "5": {
         "name": "Paint Project",
         "imageUrl": "paint-app-new.png",
         "info": "Created an application similar to Microsoft Paint in Java using the MVC model and Object Oriented Programming",
