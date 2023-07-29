@@ -29,7 +29,7 @@ function JoinRoom() {
     };
 
     return (
-        <div className="App">
+        <div className="vh-100 d-flex flex-column align-items-center">
             {/* <header className="App-header"> */}
             {/* </header> */}
 

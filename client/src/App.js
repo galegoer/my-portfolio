@@ -12,7 +12,6 @@ import BattleShip from './components/BattleShip';
 function App() {
 
   return (
-      <div style={{backgroundColor:'var(--bg-color)', transition:'background 1s', minHeight:'100vh', position:'relative'}}>
       <Router>
         <NavBar />
         <Routes>
@@ -30,7 +29,6 @@ function App() {
         </Routes>
         <Footer />
       </Router>
-    </div>
   );
 }
 

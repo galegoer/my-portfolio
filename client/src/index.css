@@ -16,6 +16,9 @@
   --card-color: rgb(23, 23, 23);
   --radial-gradient-before: rgba(255, 255, 255, 0.06);
   --radial-gradient-after: rgba(255, 255, 255, 0.4);
+
+  /* --radial-gradient-before: rgba(29, 78, 216, 0.15); */
+  /* --radial-gradient-after: rgba(29, 78, 216, 0.46); */
 }
 
 /*has global variables and more: ALSO ACTS AS DEFAULT SCHEME COLORS/VALUES WHEN A SPECIFIC THEME IS NOT DEFINED*/ 
@@ -23,8 +26,12 @@
   --color: rgb(20, 20, 20);
   --bg-color: aliceblue;
   --card-color: rgb(225, 222, 222);
-  --radial-gradient-before:rgba(79, 75, 75, 0.2);
-  --radial-gradient-after:rgba(0, 0, 0, 0.88);
+  /* --radial-gradient-before:rgba(79, 75, 75, 0.2);
+  --radial-gradient-after:rgba(0, 0, 0, 0.88); */
+
+  --radial-gradient-before: rgba(29, 78, 216, 0.15);
+  --radial-gradient-after: rgba(29, 78, 216, 0.46);
+
   --color-background: rgb(232,236,239);
   --color-background-dark: #c9c7c7;
   --color-background-grey: #f1f1f1;
@@ -39,7 +46,7 @@
 }
 
 body {
-  margin: 0;
+  /* margin: 0; */
   background-color: var(--bg-color);
   color: var(--color);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -47,9 +54,42 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background 1s;
+  position:'relative';
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.25rem;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+a {
+  background-color: transparent;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Specifically adjustments for AboutMe font but can adjust other fonts later */
+@media(max-width: 1000px) {
+  body {
+    font-size: 0.9rem;
+  }
+}
+
+@media(max-width: 350px) {
+  body {
+    font-size: 0.75rem;
+  }
 }

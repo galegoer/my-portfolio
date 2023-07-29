@@ -1,23 +1,161 @@
+/* Could also transfer to a .module.css file so we do not have to have !important */
+.awsBtn {
+    --slider-height-percentage: 57% !important;
+    --slider-transition-duration: 500ms !important;
+    --organic-arrow-thickness: 8px !important;
+    --organic-arrow-border-radius: 0px !important;
+    --organic-arrow-height: 40px !important;
+    --organic-arrow-color: #b2bdcc !important;
+    --content-background-color: var(--bg-color) !important;
+}
+
+.temp {
+    height: 100vh;
+    overflow-y: scroll;
+    width: 100%;
+}
+
+.arrow {
+    border: solid #b2bdcc;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    width: 50px;
+    height: 50px;
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.down-arrow {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 40px;
+    height: 40px;
+    z-index: 2;
+}
+
 .hacker-txt {
   color: white;
   font-size: 5rem;
   font-family: "Space Mono", monospace;
   z-index: 3;
+  position: relative;
 }
 
 .txt-box {
-  background-color: rgba(var(--bs-dark-rgb), 0.75);
-  color: white;
-  border-radius: 25px;
-  /* padding-bottom: 2rem;
-  padding-top: 2rem; */
-  padding: 2rem;
-  text-align: center;
-  font-size: 40px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    align-items: center;
+    background-color: rgba(var(--bs-dark-rgb), 0.75);
+    color: white;
+    border-radius: 25px;
+    padding: 2rem;
+    text-align: center;
+    width: 75%;
+}
+
+.project-page {
+    overflow: auto;
+    height: 100vh;
+    padding-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 7.5rem;
+}
+
+.project-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5%;
+    width: 75%;
+}
+
+.project-name {
+    z-index: 4;
+    font-size: 2rem;
+    color: var(--color);
+    position: relative;
+}
+
+.project-name > a {
+    text-decoration: none;
+    position: relative;
+}
+
+.project-name:hover {
+    color: var(--color-light-blue);
+}
+
+.project-txt {
+    padding: 1.5rem;
+    align-self: baseline;
+}
+
+.project-tags {
+    margin-top: 0.5rem;
+    text-align: center;
+    justify-content: space-around;
+    color: var(--color-light-blue);
+}
+
+.project-tag {
+    border-radius: 999px;
+    padding: 1rem;
+    /* This is based on --color-light-blue */
+    background-color: rgba(52,152,219,.1);
+    margin: 0.25rem;
+}
+
+.project-arrow {
+    transition: transform 0.3s ease;
+}
+
+.project-name:hover .project-arrow {
+    transition: 0.2s ease;
+    transform: translateY(-25%);
+}
+
+.project-hover {
+    width: 60%;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    align-self: center;
+}
+
+.project-display {
+    display: flex;
+}
+
+.memoji {
+    max-width: 50%;
+    width: 200px;
+    /* height: 200px; */
+    transform: translatey(0px);
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+      transform: translatey(0px);
+    }
+    50% {
+      transform: translatey(-20px);
+    }
+    100% {
+      transform: translatey(0px);
+    }
 }
 
 .skills-area {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-content: center;
   flex-wrap: wrap;
@@ -38,7 +176,8 @@ section {
     display: grid;
     place-items: center;
     align-content: center;
-    min-height: 100vh;
+    height: 100vh;
+    margin-bottom: 5rem;
 }
 
 .hidden {
@@ -54,6 +193,62 @@ section {
     transform: translateX(0)
 }
 
+/* Contact */
+
+.contact-form {
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(var(--bs-dark-rgb), 0.75);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 40vw;
+    margin-top: 5rem;
+}
+  
+.contact-form h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: white;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Window size changes */
 
 @media(prefers-reduced-motion) {
     .hidden {
@@ -65,24 +260,28 @@ section {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;  
-    max-width: 916px;
+    max-width: 800px;
     width: calc(100% - 20px);
     justify-content: center;
+    align-self: center;
 }
   
 #cards:hover > .home-card::after {
     opacity: 1;
 }
   
+.skills-area .home-card {
+    width: 300px;
+    height: 200px;
+}
+
 .home-card {
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     cursor: pointer;
     display: flex;
-    height: 260px;
     flex-direction: column;
     position: relative;
-    width: 300px;  
 }
   
 .home-card:hover::before {
@@ -181,11 +380,33 @@ section {
     margin-top: 8px;
 }
 
+/* Site Features */
+
+.site-feature {
+    background-color: transparent;
+}
+
+.site-feature:hover {
+    --tw-shadow: inset 0 1px 0 0 rgba(148,163,184,.1);
+    --tw-shadow-colored: inset 0 2px 0 0 var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);
+    background-color: rgba(30,41,59,.5);
+    /* --tw-shadow: 0 0 #0000; */
+    --tw-ring-offset-shadow: 0 0 #0000;
+    --tw-ring-shadow: 0 0 #0000;
+}
+
 .mx-10 {
   margin-right: 10rem !important;
   margin-left: 10rem !important;
 }
 
+
+@media(max-width: 1500px) {
+    .project-display {
+        display: contents;
+    }
+}
 
 @media(max-width: 1000px) {
   body {
@@ -194,7 +415,7 @@ section {
   }
     
   #cards {    
-      max-width: 1000px;
+      max-width: 800px;
       padding: 10px 0px;
   }
     
@@ -204,14 +425,15 @@ section {
   }
 }
   
-@media(max-width: 500px) {
-  .home-card {
-      height: 180px;
+@media(max-width: 750px) {
+  .skills-area .home-card {
+    height: 100px;
+    width: 100%;
   }
     
-  .card-image {
+  /* .card-image {
       height: 80px;  
-  }
+  } */
     
   .card-image > i {
       font-size: 3em;
@@ -233,9 +455,18 @@ section {
       font-size: 0.8em;
       margin-top: 4px;
   }
+
+  .hacker-txt {
+    font-size: 3rem;
+  }
+
+  .txt-box {
+    flex-direction: column;
+  }
+
 }
   
-@media(max-width: 320px) {
+@media(max-width: 350px) {
   .home-card {
       width: 100%;
   }
