@@ -1,7 +1,7 @@
 FROM python:3.8 as python-build
 RUN apt-get update && apt-get install -y curl
 RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
-RUN apt-get install -y nodejs
+RUN apt-get install -y nodejs npm
 
 WORKDIR /usr/app/server/
 ENV PYTHONDONTWRITEBYTECODE 1
