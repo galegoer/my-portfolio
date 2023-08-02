@@ -6,7 +6,7 @@
     --organic-arrow-border-radius: 0px !important;
     --organic-arrow-height: 40px !important;
     --organic-arrow-color: #b2bdcc !important;
-    --content-background-color: var(--bg-color) !important;
+    --content-background-color: inherit !important;
 }
 
 .temp {
@@ -79,7 +79,6 @@
 
 .project-name {
     z-index: 4;
-    font-size: 2rem;
     color: var(--color);
     position: relative;
 }
