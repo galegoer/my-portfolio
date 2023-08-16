@@ -310,7 +310,8 @@ function BattleShip() {
     }
 
     return (
-      <div className='d-flex justify-content-center flex-column align-items-center'>
+        // TODO: Adjust vh-100 not ideal on most sub pages
+      <div className='d-flex justify-content-center flex-column align-items-center vh-100'>
         <div ref={gameInfo} className="game-info">
             <p>Turn: <span id="turn-display"></span></p>
             <p>Info: <span id="info">Please place all your pieces first!</span></p>
@@ -318,20 +319,22 @@ function BattleShip() {
 
         <div ref={gameBoardRef} className="game-container d-flex justify-content-between mb-4"></div>
 
-        <div ref={piecesRef} className="pieces-container d-flex align-items-center">
-            <div id="0" className="destroyer destroyer-inventory ship-preview" draggable="true"></div>
-            <div id="1" className="submarine submarine-inventory ship-preview" draggable="true"></div>
-            <div id="2" className="cruiser cruiser-inventory ship-preview" draggable="true"></div>
-            <div id="3" className="battleship battleship-inventory ship-preview" draggable="true"></div>
-            <div id="4" className="carrier carrier-inventory ship-preview" draggable="true"></div>
-        </div>
+        <div className='d-flex'>
+            <div ref={piecesRef} className="pieces-container d-flex align-items-center">
+                <div id="0" className="destroyer destroyer-inventory ship-preview" draggable="true"></div>
+                <div id="1" className="submarine submarine-inventory ship-preview" draggable="true"></div>
+                <div id="2" className="cruiser cruiser-inventory ship-preview" draggable="true"></div>
+                <div id="3" className="battleship battleship-inventory ship-preview" draggable="true"></div>
+                <div id="4" className="carrier carrier-inventory ship-preview" draggable="true"></div>
+            </div>
 
-        <button id="flip-button" onClick={flipShips}>FLIP</button>
+            <button id="flip-button" onClick={flipShips}>FLIP</button>
+        </div>
         <button id="join-single-button" onClick={joinSinglePlayer}>SINGLE PLAYER START</button>
         <button id="join-mult-button" onClick={joinMultiplayer}>JOIN MULTIPLAYER</button>
         <button id="start-button">START MULTIPLAYER</button>
         {/* TODO: Make visible only when clicking multiplayer */}
-        <div className='player-info'>
+        <div className='player-info d-flex justify-content-between'>
             <div className="player p1">
                 Player 1
                 <div className='connected'>Connected <span></span></div>
