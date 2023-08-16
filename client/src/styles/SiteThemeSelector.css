@@ -6,10 +6,9 @@
 }
 
 .theme-select-label {
-    color: #b0b2c5;
-    font-weight: 700;
-    font-size: 16px;
-    padding-right: 6x;
+    color: var(--bs-navbar-color);
+    font-weight: var(--bs-nav-link-font-weight);
+    padding-right: var(--bs-navbar-nav-link-padding-x);
 }
 .theme-button {
     /* width: 20px;
@@ -29,7 +28,7 @@
     color: #aeb1cf;
 }
 
-.theme-button:hover .hover-info.top {
+.theme-button:hover .hover-info.bottom {
     display: block;
 }
 

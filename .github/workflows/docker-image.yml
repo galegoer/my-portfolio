@@ -40,6 +40,9 @@ jobs:
           echo REACT_APP_PARSE_JS_KEY="${{ secrets.REACT_APP_PARSE_JS_KEY }}" >> .env
           echo REACT_APP_PARSE_SERVER_URL="${{ secrets.REACT_APP_PARSE_SERVER_URL }}" >> .env
           echo REACT_APP_TEST_VAR="${{ secrets.REACT_APP_TEST_VAR }}" >> .env
+          echo REACT_APP_SERVICE_ID="${{ secrets.REACT_APP_SERVICE_ID }}" >> .env
+          echo REACT_APP_TEMPLATE_ID="${{ secrets.REACT_APP_TEMPLATE_ID }}" >> .env
+          echo REACT_APP_EMAIL_PUBLIC_KEY="${{ secrets.REACT_APP_EMAIL_PUBLIC_KEY }}" >> .env
           cd ..
           docker build -t $ECR_REGISTRY/$IMAGE_NAME:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$IMAGE_NAME:$IMAGE_TAG

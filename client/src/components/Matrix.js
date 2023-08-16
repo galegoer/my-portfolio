@@ -23,6 +23,7 @@ function MatrixBackground({ timeout = 100 }) {
         const matrixEffect = () => {
             context.fillStyle = '#0001';        
             // context.fillStyle = '#0000';
+            context.filter = "blur(4px)";
 
             context.fillRect(0, 0, width, height);
 

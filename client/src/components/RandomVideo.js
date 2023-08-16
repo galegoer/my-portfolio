@@ -35,8 +35,8 @@ function RandomVideo(props) {
     return (
       <div className="d-flex flex-column body-font">
         <div className="d-flex flex-column align-items-center justify-content-center text-center">
-          <h2 className="w-75 text-center">This is where I host a weekly song reccomendation! A new song will be added every Sunday night 9pm EST!</h2>
-          <h4 className="w-50 text-center">This was coded with Back4App, which runs a JS cloud job daily to store and update the latest random reccomendations.
+          <h2 className="w-75 text-center">This is where I host a weekly song recomendation! A new song will be added every Sunday night 9pm EST!</h2>
+          <h4 className="w-50 text-center">This was coded with Back4App, which runs a JS cloud job daily to store and update the latest random recomendations.
           Videos are randomly selected from a YouTube playlist utilizing YouTube Data APIs.</h4>
         </div>
         {/* TODO: Add a timer/countdown to next song? */}
