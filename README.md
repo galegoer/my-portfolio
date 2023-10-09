@@ -6,6 +6,8 @@ First a Docker image of our current React and Node.JS application is created whe
 
 Still under active development.
 
-Hosted for now at http://ec2-3-128-207-4.us-east-2.compute.amazonaws.com/
+~~Hosted for now at http://ec2-3-128-207-4.us-east-2.compute.amazonaws.com/~~
+
+Currently down as I look for an alternative way to host.
 
 # TODO: Add a diagram of the architecture
