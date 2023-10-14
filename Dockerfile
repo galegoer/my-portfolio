@@ -1,26 +1,29 @@
-FROM python:3.8 as python-build
-RUN apt-get update && apt-get install -y curl
-RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
-RUN apt-get install -y nodejs npm
+# FROM python:3.8 as python-build
+# RUN apt-get update && apt-get install -y curl
+# RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
+# RUN apt-get install -y nodejs npm
 
-WORKDIR /usr/app/server/
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONBUFFERED 1
-COPY server/requirements.txt ./
+# WORKDIR /usr/app/server/
+# ENV PYTHONDONTWRITEBYTECODE 1
+# ENV PYTHONBUFFERED 1
+# COPY server/requirements.txt ./
 # RUN pip install --upgrade pip
+
 # TODO: These alone make up 2.5GB on the Docker image, since its only purpose is for one script
 # may be better to host this aspect differently
-RUN pip install --no-cache-dir -r requirements.txt
-RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
+# RUN pip install --no-cache-dir -r requirements.txt
+# RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
 
-# FROM node:14 AS ui-build
+FROM alpine:latest AS ui-build
 WORKDIR /usr/app/client/
+RUN apk add nodejs npm
 
-COPY client/package*.json ./
+COPY client/ ./
+# COPY client/package*.json ./
 RUN npm install --force
-COPY client/src/ ./src
-COPY client/public/ ./public
-COPY client/.env ./
+# COPY client/src/ ./src
+# COPY client/public/ ./public
+# COPY client/.env ./
 RUN npm run build
 
 # FROM node:14 AS server-build
@@ -28,10 +31,10 @@ RUN npm run build
 
 WORKDIR /usr/app/server/
 
-COPY server/package*.json ./
-RUN npm install
+# COPY server/package*.json ./
 
-COPY server/* ./
+COPY server/ ./
+RUN npm install
 
 ENV NODE_ENV=production
 
